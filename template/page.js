@@ -4,5 +4,5 @@ module.exports = {
   descriptions: 'webpack-devkit',
   keywords: 'webpack-devkit',
   css: [],
-  js: []
+  js: ['http://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js']
 };

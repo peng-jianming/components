@@ -7,6 +7,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { merge } = require("webpack-merge");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const DEV = "development";
 
@@ -22,9 +23,9 @@ const entryConfigure = () => {
 
 const outputConfigure = () => {
   return {
-    filename: '[name].[hash].js',
+    filename: '[name]/index.[hash].js',
     chunkFilename: '[name].[hash].js',
-    publicPath: '/',
+    // publicPath: '/',
     path: paths.distPath()
   };
 };
@@ -76,12 +77,91 @@ const resolveConfigure = () => {
   };
 };
 
+const imageLoaderConfigure = () => {
+  return {
+    test: /\.(png|jpe?g|gif|svg)$/i,
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          outputPath: 'images',
+          name: '[name].[hash:7].[ext]',
+          limit: 10000
+        }
+      }
+    ]
+  };
+};
+const fontsLoaderConfigure = () => {
+  return {
+    test: /\.(woff2?|eot|ttf|otf)$/i,
+    loader: 'url-loader',
+    options: {
+      limit: 10000,
+      name: '[name].[hash:7].[ext]',
+      outputPath: 'fonts'
+    }
+  };
+};
+const babelLoaderConfigure = () => {
+  return {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: ['thread-loader', 'babel-loader']
+  };
+};
+const cssLoaderConfigure = () => {
+  return {
+    test: /\.css$/,
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1
+        }
+      },
+      'postcss-loader'
+    ]
+  };
+};
+
+const lessLoaderConfigure = () => {
+  return {
+    test: /\.less$/,
+    use: [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 2
+        }
+      },
+      'postcss-loader',
+      'less-loader'
+    ]
+  };
+};
+const vueLoaderConfigure = () => {
+  return {
+    test: /\.vue$/,
+    exclude: /node_modules/,
+    use: ['thread-loader', 'vue-loader']
+  };
+};
 
 const baseConfig = {
   entry: entryConfigure,
   output: outputConfigure(),
   module: {
-    rules: [],
+    rules: [
+      imageLoaderConfigure(),
+      fontsLoaderConfigure(),
+      babelLoaderConfigure(),
+      cssLoaderConfigure(),
+      lessLoaderConfigure(),
+      vueLoaderConfigure()
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -90,9 +170,13 @@ const baseConfig = {
       format: ' build[:bar]' + ':percent' + '(:elapsed seconds)',
       clear: false
     }),
+    new VueLoaderPlugin()
   ],
   stats: statsConfigure(),
   resolve: resolveConfigure(),
+  externals: {
+    vue: 'Vue'
+  }
 };
 
 module.exports = () => {

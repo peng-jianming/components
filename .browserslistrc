@@ -1,0 +1,6 @@
+defaults
+IE >= 9
+Chrome >= 43
+ChromeAndroid >= 43
+Android >= 4.1
+iOS >= 13
