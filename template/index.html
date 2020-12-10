@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="Description"
+      content="<%= htmlWebpackPlugin.options.configs.descriptions %>"
+    />
+    <meta
+      name="Keywords"
+      content="<%= htmlWebpackPlugin.options.configs.keywords %>"
+    />
+    <title><%= htmlWebpackPlugin.options.configs.title %></title>
+    <link
+      rel="shortcut icon"
+      href="<%= htmlWebpackPlugin.options.configs.icon %>"
+    />
+    <% htmlWebpackPlugin.options.configs.js.forEach(function(js) { %>
+    <script src="<%= js %>"></script>
+    <% }) %> <% htmlWebpackPlugin.options.configs.css.forEach(function(css) { %>
+    <link rel="stylesheet" href="<%= css %>" />
+    <% }) %>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
