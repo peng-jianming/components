@@ -1,28 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="Description"
-      content="<%= htmlWebpackPlugin.options.configs.descriptions %>"
-    />
-    <meta
-      name="Keywords"
-      content="<%= htmlWebpackPlugin.options.configs.keywords %>"
-    />
-    <title><%= htmlWebpackPlugin.options.configs.title %></title>
-    <link
-      rel="shortcut icon"
-      href="<%= htmlWebpackPlugin.options.configs.icon %>"
-    />
-    <% htmlWebpackPlugin.options.configs.js.forEach(function(js) { %>
-    <script src="<%= js %>"></script>
-    <% }) %> <% htmlWebpackPlugin.options.configs.css.forEach(function(css) { %>
-    <link rel="stylesheet" href="<%= css %>" />
-    <% }) %>
-  </head>
-  <body>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <title>
+    <%= htmlWebpackPlugin.options.configs.title %>
+  </title>
+  <link rel="shortcut icon" href="<%= htmlWebpackPlugin.options.configs.icon %>" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="robots" content="noindex,noarchive" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="Copyright" content="<%= htmlWebpackPlugin.options.configs.copyright %>" />
+  <meta name="Description" content="<%= htmlWebpackPlugin.options.configs.descriptions %>" />
+  <meta name="Keywords" content="<%= htmlWebpackPlugin.options.configs.keywords %>" />
+  <!--开始注入配置文件的css-->
+  <% Array.isArray(htmlWebpackPlugin.options.configs.css) &&
+    htmlWebpackPlugin.options.configs.css.forEach(function(css) { %>
+  <link href="<%= css %>" rel="stylesheet" />
+  <% }) %>
+  <!--结束注入配置文件的css-->
+  <!--开始注入webpack生成的css-->
+  <% htmlWebpackPlugin.files.css.forEach(function(css) { %>
+  <link href="<%= css %>" rel="stylesheet" />
+  <% }) %>
+  <!--结束注入webpack生成的css-->
+  <!--开始注入配置文件的script-->
+  <% Array.isArray(htmlWebpackPlugin.options.configs.script) &&
+    htmlWebpackPlugin.options.configs.script.forEach(function(script) { %>
+  <script type="text/javascript" src="<%= script %>"></script>
+  <% }) %>
+  <!--结束注入配置文件的script-->
+</head>
+
+<body>
+  <div class="page">
     <div id="app"></div>
-  </body>
+  </div>
+  <!--开始注入webpack生成的js-->
+  <% htmlWebpackPlugin.files.js.forEach(function(js) { %>
+  <script type="text/javascript" src="<%= js %>"></script>
+  <% }) %>
+  <!--结束注入webpack生成的js-->
+</body>
+
 </html>

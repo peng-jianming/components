@@ -1,22 +1,24 @@
-const paths = require("./paths.config");
+const paths = require('../paths.config');
 const fs = require('fs');
 const path = require('path');
-const deepMerge = require('./deep-merge');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const deepMerge = require('../utils/deep-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const MANIFEST = 'manifest';
 const VENDOR = 'vendor';
 
-function handleHTMLPlugin(key, file, myConfigs, production = false) {
-  console.log(key, file);
+const handleHTMLPlugin = (key, myPage, myConfigs, production = false) => {
   const opts = {
-    filename: path.join(key, 'index.html').split(/\\/g).join('/'),
-    template: file,
+    filename: path
+      .join(key, 'index.html')
+      .split(/\\/g)
+      .join('/'),
+    template: myPage,
     inject: false,
     minify: production
       ? {
           removeComments: true,
-          collapseWhitespace: true,
+          collapseWhitespace: true
         }
       : false,
     cache: true,
@@ -26,12 +28,12 @@ function handleHTMLPlugin(key, file, myConfigs, production = false) {
     //   assetsRetryConfig: feflowConfig.assetsRetryConfig,
     // },
     chunks: production ? [MANIFEST, VENDOR, key] : [key],
-    chunksSortMode: "manual",
+    chunksSortMode: 'manual'
   };
   return new HtmlWebpackPlugin(opts);
-}
+};
 
-module.exports = function(entries, production = false) {
+module.exports = (entries, production = false) => {
   return {
     plugins: [
       ...Object.entries(entries).map(([key, entryPath]) => {
@@ -53,7 +55,7 @@ module.exports = function(entries, production = false) {
         const myConfigs = deepMerge({}, globalPageConfig, myConfigFile);
 
         return handleHTMLPlugin(key, myPage, myConfigs, production);
-      }),
-    ],
+      })
+    ]
   };
 };
