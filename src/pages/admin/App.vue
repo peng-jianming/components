@@ -5,10 +5,12 @@
     <el-button type="primary" @click="handle"
       >122222222222222222222222222222221</el-button
     >
+    <el-button type="primary" @click="click">33333</el-button>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import { isEmpty } from 'loadsh';
 export default {
   data() {
@@ -16,11 +18,25 @@ export default {
       num: 1
     };
   },
-  mounted() {},
   methods: {
-    handle() {
+    async handle() {
       console.log(isEmpty({}), '222222222');
       this.num++;
+      const { data } = await this.$http.post(
+        '/login',
+        {
+          name: 'lisi',
+          password: '555'
+        },
+        {
+          debounce: false
+        }
+      );
+      axios.defaults.headers.common.Authorization = data.token;
+    },
+    async click() {
+      const { data } = await this.$http.get('/user');
+      console.log(data);
     }
   }
 };

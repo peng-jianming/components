@@ -69,7 +69,7 @@ const eslintLoaderConfigure = () => {
   return {
     enforce: 'pre',
     test: /\.(js|vue)$/,
-    include: /node_modules/,
+    exclude: /node_modules/,
     use: ['thread-loader', 'eslint-loader']
   };
 };

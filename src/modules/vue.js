@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Http from 'src/modules/http/index';
+import Http from 'src/modules/http';
 
 Vue.use(Http);
 
