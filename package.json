@@ -1,5 +1,5 @@
 {
-  "name": "myComponents",
+  "name": "components",
   "sideEffects": [
     "*.css",
     "*.less"
@@ -10,8 +10,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.js",
-    "dev": "cross-env NODE_ENV=development webpack --config ./build/webpack.config.js",
-    "lint": "eslint --fix --ext .js,.vue */"
+    "lint": "eslint --fix --ext .js,.vue src/"
   },
   "keywords": [],
   "author": "",
@@ -69,6 +68,7 @@
     "webpack-merge": "^5.4.1"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "loadsh": "0.0.4"
   }
 }

@@ -5,30 +5,38 @@
     <el-button type="primary" @click="handle"
       >122222222222222222222222222222221</el-button
     >
-    <son-component />
+    <el-button type="primary" @click="click">33333</el-button>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import { isEmpty } from 'loadsh';
-import { add } from 'src/modules/utils/add';
-import SonComponent from './SonOne';
 export default {
-  components: {
-    SonComponent
-  },
   data() {
     return {
       num: 1
     };
   },
-  mounted() {
-    console.log(add(2, 4));
-  },
   methods: {
-    handle() {
+    async handle() {
       console.log(isEmpty({}), '222222222');
       this.num++;
+      const { data } = await this.$http.post(
+        '/login',
+        {
+          name: 'lisi',
+          password: '555'
+        },
+        {
+          debounce: false
+        }
+      );
+      axios.defaults.headers.common.Authorization = data.token;
+    },
+    async click() {
+      const { data } = await this.$http.get('/user');
+      console.log(data);
     }
   }
 };
