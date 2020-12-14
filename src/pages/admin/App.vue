@@ -5,26 +5,18 @@
     <el-button type="primary" @click="handle"
       >122222222222222222222222222222221</el-button
     >
-    <son-component />
   </div>
 </template>
 
 <script>
 import { isEmpty } from 'loadsh';
-import { add } from 'src/modules/utils/add';
-import SonComponent from './SonOne';
 export default {
-  components: {
-    SonComponent
-  },
   data() {
     return {
       num: 1
     };
   },
-  mounted() {
-    console.log(add(2, 4));
-  },
+  mounted() {},
   methods: {
     handle() {
       console.log(isEmpty({}), '222222222');
