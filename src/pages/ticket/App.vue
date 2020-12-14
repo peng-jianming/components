@@ -1,8 +1,6 @@
 <template>
   <el-container>
-    <el-header>
-      <header-component />
-    </el-header>
+    <el-header>工单</el-header>
     <el-container>
       <el-aside width="200px">Aside</el-aside>
       <el-container>
@@ -16,11 +14,7 @@
 <script>
 import axios from 'axios';
 import { isEmpty } from 'loadsh';
-import HeaderComponent from 'src/modules/component/layout/Header';
 export default {
-  components: {
-    HeaderComponent
-  },
   data() {
     return {
       num: 1
