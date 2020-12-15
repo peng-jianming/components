@@ -1,12 +1,12 @@
 <template>
   <el-container>
-    <el-header>
+    <el-header height="50px">
       <header-component />
     </el-header>
     <el-container>
       <el-aside width="200px">Aside</el-aside>
       <el-container>
-        <el-main>Main</el-main>
+        <el-main>系统设置</el-main>
         <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
@@ -49,17 +49,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less">
-.test-css {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  transform: translate(100px);
-  .inner {
-    width: 50px;
-    height: 50px;
-    background-color: red;
-  }
-}
-</style>
