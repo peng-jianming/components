@@ -16,7 +16,7 @@
 <script>
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
-import sidebarConfigs from 'src/dependencies/sidebars/admin';
+import sidebarConfigs from 'src/dependencies/sidebars/workbench';
 export default {
   components: {
     HeaderComponent,

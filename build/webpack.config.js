@@ -86,7 +86,9 @@ const baseConfig = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/*', paths.distPath()]
+    }),
     new VueLoaderPlugin(),
     new ProgressBarPlugin({
       format: `  build [:bar]  ${chalk.green.bold(

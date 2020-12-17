@@ -4,10 +4,10 @@
       <header-component />
     </el-header>
     <el-container>
-      <sidebar-component />
+      <sidebar-component :sidebar-menu="sidebarConfigs" />
       <el-container>
-        <el-main>工单</el-main>
-        <el-footer>Footer</el-footer>
+        <router-view> </router-view>
+        <el-footer></el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -16,10 +16,16 @@
 <script>
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
+import sidebarConfigs from 'src/dependencies/sidebars/ticket';
 export default {
   components: {
     HeaderComponent,
     SidebarComponent
+  },
+  data() {
+    return {
+      sidebarConfigs
+    };
   }
 };
 </script>

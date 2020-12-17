@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <div class="page-logo">
-      <img :src="logo" />
+      <!-- <img :src="logo" /> -->
     </div>
     <ul class="page-menu clearfloat">
       <li v-for="item in menus" :key="item.id" class="menu-item">
@@ -15,19 +15,22 @@
 </template>
 
 <script>
-import logo from 'src/modules/img/andon-logo-2.png';
 export default {
   data() {
     return {
-      logo,
       menus: [
         {
           id: '1',
-          name: '工单',
-          link: '/ticket'
+          name: '与我相关',
+          link: '/workbench'
         },
         {
           id: '2',
+          name: '客服工单',
+          link: '/ticket'
+        },
+        {
+          id: '3',
           name: '系统设置',
           link: '/admin'
         }
@@ -41,7 +44,7 @@ export default {
 .page-header {
   position: relative;
   min-height: 50px;
-  background-color: #2d2f33;
+  background-color: #409eff;
   .page-logo {
     position: absolute;
     left: 0;
@@ -50,10 +53,7 @@ export default {
     height: 50px;
     text-align: center;
     padding: 5px 0;
-    background-color: #2d2f33;
-    &:hover {
-      background-color: #262626;
-    }
+    background-color: #409eff;
     img {
       width: 80%;
     }
@@ -61,7 +61,7 @@ export default {
   .page-menu {
     padding-left: 200px;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
     .menu-item {
       width: 100px;
       height: 50px;
