@@ -10,6 +10,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development webpack --config ./build/webpack.config.js --watch",
     "lint": "eslint --fix --ext .js,.vue src/"
   },
   "keywords": [],

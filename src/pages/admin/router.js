@@ -20,15 +20,14 @@ const router = new VueRouter({
       component: () =>
         import(
           /* webpackChunkName: "noticeComponent" */ 'src/pages/admin/notice'
-        ),
-      meta: { permission: 'AVB' }
+        )
     },
     {
       path: '/permission',
       name: 'permission',
       component: () =>
         import(
-          /* webpackChunkName: "permissionComponent" */ 'src/pages/admin/permission'
+          /* webpackChunkName: "permissionComponent" */ 'src/pages/admin/permission/manage'
         )
     }
   ]

@@ -55,7 +55,10 @@ const babelLoaderConfigure = () => {
   return {
     test: /\.js$/,
     exclude: /node_modules/,
-    use: ['thread-loader', 'babel-loader']
+    use: [
+      'thread-loader',
+      { loader: 'babel-loader', options: { cacheDirectory: true } }
+    ]
   };
 };
 const vueLoaderConfigure = () => {

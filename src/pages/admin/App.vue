@@ -5,9 +5,9 @@
     </el-header>
     <el-container>
       <sidebar-component :sidebar-menu="sidebarConfigs" />
-      <el-container>
+      <el-container direction="vertical">
+        <breadcrumb-component />
         <router-view></router-view>
-        <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -16,11 +16,13 @@
 <script>
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
+import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
 import sidebarConfigs from 'src/dependencies/sidebars/admin';
 export default {
   components: {
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    BreadcrumbComponent
   },
   data() {
     return {

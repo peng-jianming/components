@@ -1,5 +1,5 @@
 <template>
-  <el-aside width="200px">
+  <el-aside width="200px" class="page-sidebar">
     <el-scrollbar wrap-class="scrollbar-wrapper" view-class="scrollbar-view">
       <el-menu
         :default-openeds="defaultOpened"
@@ -72,3 +72,23 @@ export default {
   }
 };
 </script>
+
+<style lang="less">
+.page-sidebar {
+  height: 100%;
+  .el-scrollbar {
+    height: 100%;
+    .scrollbar-wrapper {
+      overflow-x: hidden;
+      height: 100%;
+      .scrollbar-view {
+        height: 100%;
+        .el-menu {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+</style>
