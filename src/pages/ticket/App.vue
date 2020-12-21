@@ -1,9 +1,9 @@
 <template>
-  <el-container>
+  <el-container class="page-container">
     <el-header height="50px">
       <header-component />
     </el-header>
-    <el-container>
+    <el-container class="page-context">
       <sidebar-component :sidebar-menu="ticketRouters" />
       <el-container direction="vertical">
         <breadcrumb-component :base-title="baseTitle" />

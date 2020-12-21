@@ -1,80 +1,24 @@
 <template>
   <el-card class="content">
-    <ul>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
-    <!-- <el-scroll wrap-class="scrollbar-wrapper">
-
-    </el-scroll> -->
+    <el-scrollbar wrap-class="scrollbar-wrapper" view-class="scrollbar-view">
+    </el-scrollbar>
   </el-card>
 </template>
 <style lang="less">
 .content {
-  // box-sizing: border-box;
   height: 100%;
   margin: 5px;
-  overflow: auto;
-  .el-scrollbar {
+  .el-card__body {
     height: 100%;
-    .scrollbar-wrapper {
+    padding: 0;
+    .el-scrollbar {
       height: 100%;
-      .scrollbar-view {
+      .scrollbar-wrapper {
         height: 100%;
+        overflow-x: hidden;
+        .scrollbar-view {
+          height: 100%;
+        }
       }
     }
   }
