@@ -15,9 +15,11 @@
 </template>
 
 <script>
+// import logo from 'src/modules/img/logo.png';
 export default {
   data() {
     return {
+      // logo,
       menus: [
         {
           id: '1',
@@ -46,6 +48,7 @@ export default {
   min-height: 50px;
   background-color: #409eff;
   .page-logo {
+    box-sizing: border-box;
     position: absolute;
     left: 0;
     top: 0;

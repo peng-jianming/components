@@ -2,15 +2,28 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+const originalPush = VueRouter.prototype.push;
+
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+};
+
 export const adminRouters = [
+  {
+    path: '/',
+    redirect: '/staff',
+    meta: {
+      sidebarHidden: true
+    }
+  },
   {
     path: '/permission',
     name: 'permission',
-    opened: true,
     component: { render: e => e('router-view') },
     meta: {
       sidebarName: '权限控制',
-      sidebarIcon: 'el-icon-view'
+      sidebarIcon: 'el-icon-view',
+      sidebarOpend: true
     },
     children: [
       {
@@ -50,16 +63,6 @@ export const adminRouters = [
 
 const router = new VueRouter({
   routes: adminRouters
-});
-
-router.beforeEach((to, form, next) => {
-  console.log('beforeEach', to.matched);
-  next();
-});
-
-router.afterEach((to, form, next) => {
-  console.log('afterEach', to, form);
-  // next();
 });
 
 export default router;

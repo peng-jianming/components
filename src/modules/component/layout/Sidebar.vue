@@ -10,24 +10,26 @@
         router
       >
         <div v-for="{ path, meta, children } in sidebarMenu" :key="path">
-          <el-submenu v-if="hasChildren(children)" :index="path">
-            <template slot="title">
+          <template v-if="!meta.sidebarHidden">
+            <el-submenu v-if="hasChildren(children)" :index="path">
+              <template slot="title">
+                <i :class="meta.sidebarIcon"></i>
+                <span>{{ meta.sidebarName }}</span>
+              </template>
+              <el-menu-item
+                v-for="{ path: _path, meta: _meta } in children"
+                :key="_path"
+                :index="path + '/' + _path"
+              >
+                <i :class="_meta.sidebarIcon"></i>
+                <span slot="title">{{ _meta.sidebarName }}</span></el-menu-item
+              >
+            </el-submenu>
+            <el-menu-item v-else :index="path">
               <i :class="meta.sidebarIcon"></i>
-              <span>{{ meta.sidebarName }}</span>
-            </template>
-            <el-menu-item
-              v-for="{ path: _path, meta: _meta } in children"
-              :key="_path"
-              :index="path + '/' + _path"
-            >
-              <i :class="_meta.sidebarIcon"></i>
-              <span slot="title">{{ _meta.sidebarName }}</span></el-menu-item
-            >
-          </el-submenu>
-          <el-menu-item v-else :index="path">
-            <i :class="meta.sidebarIcon"></i>
-            <span slot="title">{{ meta.sidebarName }}</span>
-          </el-menu-item>
+              <span slot="title">{{ meta.sidebarName }}</span>
+            </el-menu-item>
+          </template>
         </div>
       </el-menu>
     </el-scrollbar>
@@ -58,7 +60,7 @@ export default {
     },
     initMenu() {
       this.defaultOpened = this.sidebarMenu
-        .filter(({ opened }) => opened)
+        .filter(({ meta }) => meta.sidebarOpend)
         .map(({ path }) => path);
     }
   }

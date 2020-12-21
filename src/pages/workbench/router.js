@@ -3,21 +3,36 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      redirect: '/my-ticket'
-    },
-    {
-      path: '/my-ticket',
-      name: 'my-ticket',
-      component: () =>
-        import(
-          /* webpackChunkName: "myTicketComponent" */ 'src/pages/workbench/my-ticket'
-        )
+const originalPush = VueRouter.prototype.push;
+
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err);
+};
+
+export const workbenchRouters = [
+  {
+    path: '/',
+    redirect: '/my-ticket',
+    meta: {
+      sidebarHidden: true
     }
-  ]
+  },
+  {
+    path: '/my-ticket',
+    name: 'my-ticket',
+    component: () =>
+      import(
+        /* webpackChunkName: "myTicketComponent" */ 'src/pages/workbench/my-ticket'
+      ),
+    meta: {
+      sidebarName: '我的工单',
+      sidebarIcon: 'el-icon-s-order'
+    }
+  }
+];
+
+const router = new VueRouter({
+  routes: workbenchRouters
 });
 
 export default router;

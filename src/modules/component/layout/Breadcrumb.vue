@@ -13,10 +13,21 @@
         </el-breadcrumb-item>
       </el-breadcrumb>
     </el-card>
-    <div class="page-history" @click="handle">
-      <el-tag size="small" closable effect="dark">
-        {{ $route.meta.sidebarName }}
-      </el-tag>
+    <div class="page-history">
+      <router-link
+        v-for="({ meta, path }, index) in cacheRoute"
+        :key="index"
+        :to="path"
+      >
+        <el-tag
+          size="small"
+          closable
+          :effect="$route.path === path ? 'dark' : 'light'"
+          @close.prevent="handleClose(index)"
+        >
+          {{ meta.sidebarName }}
+        </el-tag>
+      </router-link>
     </div>
   </div>
 </template>
@@ -28,12 +39,25 @@ export default {
       default: ''
     }
   },
-  mounted() {
-    console.log(this.$route, '444444');
+  data() {
+    return {
+      cacheRoute: []
+    };
+  },
+  watch: {
+    $route(val) {
+      // 切换路由时判断当前路由是否有存
+      this.cacheRoute.every(({ path }) => path !== val.path) &&
+        this.cacheRoute.push(val);
+    }
   },
   methods: {
-    handle() {
-      console.log(this.$route);
+    handleClose(index) {
+      // 路由剩最后一个不得删除,删除路由后重新跳转最后一个访问的路由
+      if (this.cacheRoute.length !== 1) {
+        this.cacheRoute.splice(index, 1);
+        this.$router.push(this.cacheRoute[this.cacheRoute.length - 1].path);
+      }
     }
   }
 };
@@ -49,6 +73,10 @@ export default {
     padding: 8px 10px;
     border-bottom: 1px solid #ebeef5;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    .el-tag {
+      margin-right: 10px;
+    }
   }
 }
 </style>

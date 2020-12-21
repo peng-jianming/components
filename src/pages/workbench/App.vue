@@ -4,10 +4,10 @@
       <header-component />
     </el-header>
     <el-container>
-      <sidebar-component :sidebar-menu="sidebarConfigs" />
-      <el-container>
+      <sidebar-component :sidebar-menu="workbenchRouters" />
+      <el-container direction="vertical">
+        <breadcrumb-component :base-title="baseTitle" />
         <router-view></router-view>
-        <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
   </el-container>
@@ -16,15 +16,18 @@
 <script>
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
-import sidebarConfigs from 'src/dependencies/sidebars/workbench';
+import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
+import { workbenchRouters } from './router';
 export default {
   components: {
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    BreadcrumbComponent
   },
   data() {
     return {
-      sidebarConfigs
+      baseTitle: '与我相关',
+      workbenchRouters
     };
   }
 };

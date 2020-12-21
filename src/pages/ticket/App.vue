@@ -4,10 +4,10 @@
       <header-component />
     </el-header>
     <el-container>
-      <sidebar-component :sidebar-menu="sidebarConfigs" />
-      <el-container>
-        <router-view> </router-view>
-        <el-footer></el-footer>
+      <sidebar-component :sidebar-menu="ticketRouters" />
+      <el-container direction="vertical">
+        <breadcrumb-component :base-title="baseTitle" />
+        <router-view></router-view>
       </el-container>
     </el-container>
   </el-container>
@@ -16,15 +16,18 @@
 <script>
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
-import sidebarConfigs from 'src/dependencies/sidebars/ticket';
+import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
+import { ticketRouters } from './router';
 export default {
   components: {
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    BreadcrumbComponent
   },
   data() {
     return {
-      sidebarConfigs
+      baseTitle: '客服工单',
+      ticketRouters
     };
   }
 };
