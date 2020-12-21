@@ -2,16 +2,42 @@
   <div class="page-bread-crumb">
     <el-card>
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>
+          {{ baseTitle }}
+        </el-breadcrumb-item>
+        <el-breadcrumb-item
+          v-for="({ meta }, index) in $route.matched"
+          :key="index"
+        >
+          {{ meta.sidebarName }}
+        </el-breadcrumb-item>
       </el-breadcrumb>
     </el-card>
-    <div class="page-history">
-      <el-tag size="small " closable effect="dark">
-        123123
+    <div class="page-history" @click="handle">
+      <el-tag size="small" closable effect="dark">
+        {{ $route.meta.sidebarName }}
       </el-tag>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    baseTitle: {
+      type: String,
+      default: ''
+    }
+  },
+  mounted() {
+    console.log(this.$route, '444444');
+  },
+  methods: {
+    handle() {
+      console.log(this.$route);
+    }
+  }
+};
+</script>
 <style lang="less">
 .page-bread-crumb {
   .el-card {

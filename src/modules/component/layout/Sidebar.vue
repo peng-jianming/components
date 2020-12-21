@@ -9,32 +9,24 @@
         active-text-color="#ffd04b"
         router
       >
-        <div
-          v-for="{ id, name, href, icon, children } in sidebarMenu"
-          :key="id"
-        >
-          <el-submenu v-if="hasChildren(children)" :index="id">
+        <div v-for="{ path, meta, children } in sidebarMenu" :key="path">
+          <el-submenu v-if="hasChildren(children)" :index="path">
             <template slot="title">
-              <i :class="icon"></i>
-              <span>{{ name }}</span>
+              <i :class="meta.sidebarIcon"></i>
+              <span>{{ meta.sidebarName }}</span>
             </template>
             <el-menu-item
-              v-for="{
-                id: _id,
-                name: _name,
-                icon: _icon,
-                href: _href
-              } in children"
-              :key="_id"
-              :index="_href"
+              v-for="{ path: _path, meta: _meta } in children"
+              :key="_path"
+              :index="path + '/' + _path"
             >
-              <i :class="_icon"></i>
-              <span slot="title">{{ _name }}</span></el-menu-item
+              <i :class="_meta.sidebarIcon"></i>
+              <span slot="title">{{ _meta.sidebarName }}</span></el-menu-item
             >
           </el-submenu>
-          <el-menu-item v-else :index="href">
-            <i :class="icon"></i>
-            <span slot="title">{{ name }}</span>
+          <el-menu-item v-else :index="path">
+            <i :class="meta.sidebarIcon"></i>
+            <span slot="title">{{ meta.sidebarName }}</span>
           </el-menu-item>
         </div>
       </el-menu>
@@ -67,7 +59,7 @@ export default {
     initMenu() {
       this.defaultOpened = this.sidebarMenu
         .filter(({ opened }) => opened)
-        .map(({ id }) => id);
+        .map(({ path }) => path);
     }
   }
 };

@@ -4,9 +4,9 @@
       <header-component />
     </el-header>
     <el-container>
-      <sidebar-component :sidebar-menu="sidebarConfigs" />
+      <sidebar-component :sidebar-menu="adminRouters" />
       <el-container direction="vertical">
-        <breadcrumb-component />
+        <breadcrumb-component :base-title="baseTitle" />
         <router-view></router-view>
       </el-container>
     </el-container>
@@ -17,7 +17,7 @@
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
-import sidebarConfigs from 'src/dependencies/sidebars/admin';
+import { adminRouters } from 'src/pages/admin/router';
 export default {
   components: {
     HeaderComponent,
@@ -26,7 +26,8 @@ export default {
   },
   data() {
     return {
-      sidebarConfigs
+      baseTitle: '系统设置',
+      adminRouters
     };
   }
 };
