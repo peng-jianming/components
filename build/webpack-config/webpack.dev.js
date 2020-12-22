@@ -2,7 +2,7 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  devtool: 'eval-cheap-module-source-map',
+  devtool: 'eval-module-source-map',
   devServer: {
     compress: true,
     host: '127.0.0.1',

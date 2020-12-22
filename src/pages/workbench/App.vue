@@ -1,12 +1,12 @@
 <template>
-  <el-container>
+  <el-container class="page-container">
     <el-header height="50px">
-      <header-component />
+      <Header-component />
     </el-header>
-    <el-container>
-      <sidebar-component :sidebar-menu="workbenchRouters" />
+    <el-container class="page-content">
+      <Sidebar-component :sidebar-menu="workbenchRouters" />
       <el-container direction="vertical">
-        <breadcrumb-component :base-title="baseTitle" />
+        <Breadcrumb-component :base-title="baseTitle" />
         <router-view></router-view>
       </el-container>
     </el-container>

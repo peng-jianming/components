@@ -16,6 +16,7 @@ module.exports = {
   ],
   rules: {
     'no-new': 'off',
-    'prefer-const': 'off'
+    'prefer-const': 'off',
+    'vue/no-mutating-props': 'off'
   }
 };

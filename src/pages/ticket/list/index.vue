@@ -1,5 +1,11 @@
 <template>
-  <el-main style="text-align: center">
-    工单列表
-  </el-main>
+  <Content-component>工单列表</Content-component>
 </template>
+<script>
+import ContentComponent from 'src/modules/component/layout/Content';
+export default {
+  components: {
+    ContentComponent
+  }
+};
+</script>

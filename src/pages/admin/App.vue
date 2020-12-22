@@ -1,12 +1,12 @@
 <template>
-  <el-container>
+  <el-container class="page-container">
     <el-header height="50px">
-      <header-component />
+      <Header-component />
     </el-header>
-    <el-container>
-      <sidebar-component :sidebar-menu="adminRouters" />
+    <el-container class="page-content">
+      <Sidebar-component :sidebar-menu="adminRouters" />
       <el-container direction="vertical">
-        <breadcrumb-component :base-title="baseTitle" />
+        <Breadcrumb-component :base-title="baseTitle" />
         <router-view></router-view>
       </el-container>
     </el-container>
@@ -17,7 +17,7 @@
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
-import { adminRouters } from 'src/pages/admin/router';
+import { adminRouters } from './router';
 export default {
   components: {
     HeaderComponent,

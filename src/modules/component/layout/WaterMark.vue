@@ -12,7 +12,7 @@ export default {
   props: {
     img: {
       type: String,
-      default: '/'
+      default: ''
     },
     opacity: {
       type: Number,
@@ -36,6 +36,7 @@ export default {
     width: 100%;
     height: 100%;
     background-repeat: repeat;
+    pointer-events: none;
   }
 }
 </style>

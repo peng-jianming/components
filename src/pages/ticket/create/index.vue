@@ -1,26 +1,41 @@
 <template>
-  <el-card class="content">
-    <el-scrollbar wrap-class="scrollbar-wrapper" view-class="scrollbar-view">
-    </el-scrollbar>
-  </el-card>
+  <Content-component>
+    <WaterMark-component>
+      <Form-component ref="form" :label-width="'120px'" :configs="configs">
+        <el-form-item>
+          <el-button type="primary" @click="submit">立即创建</el-button>
+          <el-button @click="reset">重置</el-button>
+        </el-form-item>
+      </Form-component>
+    </WaterMark-component>
+  </Content-component>
 </template>
-<style lang="less">
-.content {
-  height: 100%;
-  margin: 5px;
-  .el-card__body {
-    height: 100%;
-    padding: 0;
-    .el-scrollbar {
-      height: 100%;
-      .scrollbar-wrapper {
-        height: 100%;
-        overflow-x: hidden;
-        .scrollbar-view {
-          height: 100%;
-        }
-      }
+<script>
+import ContentComponent from 'src/modules/component/layout/Content';
+import WaterMarkComponent from 'src/modules/component/layout/WaterMark';
+import FormComponent from 'src/modules/component/template/Form';
+import { configs } from './config/configs';
+export default {
+  components: {
+    ContentComponent,
+    WaterMarkComponent,
+    FormComponent
+  },
+  data() {
+    return {
+      configs
+    };
+  },
+  mounted() {
+    this.$refs.form && this.$refs.form.resetParams();
+  },
+  methods: {
+    submit() {
+      this.$refs.form.submit();
+    },
+    reset() {
+      this.$refs.form.resetParams();
     }
   }
-}
-</style>
+};
+</script>
