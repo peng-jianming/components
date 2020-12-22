@@ -21,7 +21,6 @@ export const configs = [
   {
     prop: 'phone_number',
     label: '联系电话',
-    type: 'number',
     required: true,
     formItemWidth: '400px'
   },
@@ -34,10 +33,20 @@ export const configs = [
   },
   {
     prop: 'problem_heppen_time',
-    props: ['a', 'b'],
+    props: ['problem_heppen_start_time', 'problem_heppen_end_time'],
     label: '问题发生时间',
     type: 'datetimerange',
     valueFormat: DATE_FORMAT,
+    defaultValue: [
+      '2021-01-28 23:59:59',
+      '2020-12-03 00:00:00',
+      ['2021-01-28 23:59:59', '2020-12-03 00:00:00']
+    ],
+    required: true
+  },
+  {
+    prop: 'description',
+    label: '问题描述',
     required: true
   }
 ];

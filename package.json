@@ -71,6 +71,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "loadsh": "0.0.4",
+    "moment": "^2.29.1",
     "vue-router": "^3.4.9"
   }
 }

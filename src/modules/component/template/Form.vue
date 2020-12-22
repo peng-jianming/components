@@ -110,14 +110,6 @@
                 >{{ value }}</el-radio
               >
             </el-radio-group>
-            <!-- safari浏览器下时间日期组件可能会出现初始化没有显现及无法选定的问题 -->
-            <date-time-range-group
-              v-else-if="type === 'datetimerangegroup'"
-              :input-class="inputClass"
-              :value="params[prop]"
-              :disabled="disabled"
-              @input="handleDateTimeRangePick(prop, props, $event)"
-            />
             <el-date-picker
               v-else-if="type === 'datetimerange'"
               :class="inputClass"
@@ -186,7 +178,6 @@
         </el-form-item>
       </template>
     </el-form>
-
     <el-form
       :label-width="labelWidth"
       :label-position="labelPosition"
@@ -199,8 +190,7 @@
 
 <script>
 import LoadingMixin from 'src/modules/mixins/loading';
-// import DateTimeRangeGroup from 'src/libs/components/date-time-range-group';
-// import moment from 'moment';
+import moment from 'moment';
 import { isFunction } from 'lodash';
 import {
   isFullEmpty,
@@ -208,11 +198,10 @@ import {
   validateWithMessage
 } from 'src/modules/utils/params';
 
+const DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss';
+
 export default {
   name: 'TemplateForm',
-  // components: {
-  //   DateTimeRangeGroup
-  // },
   mixins: [LoadingMixin],
   inheritAttrs: false,
   props: {
@@ -301,15 +290,15 @@ export default {
             value === undefined ? undefined : JSON.parse(JSON.stringify(value))
           );
         });
-        this.$emit('reset');
-        // 动态组件重置
-        const refs = this.$refs || {};
-        Object.values(refs)
-          .filter(ref => ref && ref[0] && isFunction(ref[0].reset))
-          .forEach(ref => {
-            ref[0] && ref[0].reset();
-          });
       });
+      this.$emit('reset');
+      // 动态组件重置
+      const refs = this.$refs || {};
+      Object.values(refs)
+        .filter(ref => ref && ref[0] && isFunction(ref[0].reset))
+        .forEach(ref => {
+          ref[0] && ref[0].reset();
+        });
     },
     submit() {
       this.$emit('before-submit');
@@ -328,34 +317,32 @@ export default {
         this.$emit('submit');
         return this.isFilterEmpty ? filterEmpty(this.params) : this.params;
       }
+    },
+    handleDateTimeRangePick(timeKey, [startTimeKey, endTimeKey], range) {
+      let [startTime, endTime] = range || [undefined, undefined];
+      // 将date格式转为字符串
+      startTime = startTime && moment(startTime).format(DATE_FORMAT);
+      endTime = endTime && moment(endTime).format(DATE_FORMAT);
+      this.$set(this.params, startTimeKey, startTime);
+      this.$set(this.params, endTimeKey, endTime);
+      this.$set(this.params, timeKey, [startTime, endTime]);
+    },
+    handleInput(prop, val, isFull) {
+      // 多字段暂不支持自动input
+      if (isFull) {
+        this.$emit('change');
+        return;
+      }
+      const param = this.params[prop];
+      if (Array.isArray(param)) {
+        param.splice(0, param.length);
+        param.splice(0, 0, ...val);
+      } else {
+        this.$set(this.params, prop, val);
+      }
+      this.$emit('change', prop, val);
     }
   }
-  // methods: {
-  //   handleDateTimeRangePick(timeKey, [startTimeKey, endTimeKey], range) {
-  //     let [startTime, endTime] = range || [undefined, undefined];
-  //     // 将date格式转为字符串
-  //     startTime = startTime && moment(startTime).format(DATE_FORMAT);
-  //     endTime = endTime && moment(endTime).format(DATE_FORMAT);
-  //     this.$set(this.params, startTimeKey, startTime);
-  //     this.$set(this.params, endTimeKey, endTime);
-  //     this.$set(this.params, timeKey, [startTime, endTime]);
-  //   },
-  //   handleInput(prop, val, isFull) {
-  //     // 多字段暂不支持自动input
-  //     if (isFull) {
-  //       this.$emit('change');
-  //       return;
-  //     }
-  //     const param = this.params[prop];
-  //     if (Array.isArray(param)) {
-  //       param.splice(0, param.length);
-  //       param.splice(0, 0, ...val);
-  //     } else {
-  //       this.$set(this.params, prop, val);
-  //     }
-  //     this.$emit('change', prop, val);
-  //   }
-  // }
 };
 </script>
 
