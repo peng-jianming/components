@@ -1,5 +1,6 @@
 import TicketTypeEnums from 'src/dependencies/enums/ticket/create/TicketType';
 import FeedbackEnums from 'src/dependencies/enums/ticket/create/Feedback';
+import RichTextEidtor from 'src/modules/component/rich-text-editor';
 
 const DATE_FORMAT = 'yyyy-MM-dd HH:mm:ss';
 
@@ -47,6 +48,7 @@ export const configs = [
   {
     prop: 'description',
     label: '问题描述',
-    required: true
+    required: true,
+    editComponent: RichTextEidtor
   }
 ];
