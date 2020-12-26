@@ -49,6 +49,7 @@ export const configs = [
     prop: 'description',
     label: '问题描述',
     required: true,
-    editComponent: RichTextEidtor
+    editComponent: RichTextEidtor,
+    formItemWidth: '600px'
   }
 ];
