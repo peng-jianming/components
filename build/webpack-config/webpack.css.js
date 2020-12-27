@@ -26,8 +26,8 @@ module.exports = (production = false) => {
     plugins: production
       ? [
           new MiniCssExtractPlugin({
-            filename: '[name]/index.[contenthash].css',
-            chunkFilename: '[name].[id].[contenthash].css'
+            filename: 'static/[name]/index.[contenthash].css',
+            chunkFilename: 'static/[name].[id].[contenthash].css'
           })
         ]
       : []

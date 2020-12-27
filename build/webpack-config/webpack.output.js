@@ -5,9 +5,9 @@ module.exports = (production = false) => {
     output: production
       ? {
           path: paths.distPath(),
-          filename: '[name]/index.[chunkhash].js',
-          chunkFilename: '[name].[id].[chunkhash].js'
-          // publicPath: `/`
+          filename: 'static/[name]/index.[chunkhash].js',
+          chunkFilename: 'static/[name].[id].[chunkhash].js',
+          publicPath: `http://8.129.90.25:8080`
         }
       : {
           path: paths.distPath(),

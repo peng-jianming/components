@@ -31,7 +31,7 @@ export const adminRouters = [
         name: 'manage',
         component: () =>
           import(
-            /* webpackChunkName: "manage" */ 'src/pages/admin/permission/manage'
+            /* webpackChunkName: "admin/manage" */ 'src/pages/admin/permission/manage'
           ),
         meta: {
           sidebarName: '客服权限'
@@ -43,7 +43,7 @@ export const adminRouters = [
     path: '/staff',
     name: 'staff',
     component: () =>
-      import(/* webpackChunkName: "staff" */ 'src/pages/admin/staff'),
+      import(/* webpackChunkName: "admin/staff" */ 'src/pages/admin/staff'),
     meta: {
       sidebarName: '客服管理',
       sidebarIcon: 'el-icon-service'
@@ -53,7 +53,7 @@ export const adminRouters = [
     path: '/notice',
     name: 'notice',
     component: () =>
-      import(/* webpackChunkName: "notice" */ 'src/pages/admin/notice'),
+      import(/* webpackChunkName: "admin/notice" */ 'src/pages/admin/notice'),
     meta: {
       sidebarName: '客服公告',
       sidebarIcon: 'el-icon-bell'

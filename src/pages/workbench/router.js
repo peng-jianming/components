@@ -22,7 +22,7 @@ export const workbenchRouters = [
     name: 'my-ticket',
     component: () =>
       import(
-        /* webpackChunkName: "myTicketComponent" */ 'src/pages/workbench/my-ticket'
+        /* webpackChunkName: "workbench/myTicketComponent" */ 'src/pages/workbench/my-ticket'
       ),
     meta: {
       sidebarName: '我的工单',
