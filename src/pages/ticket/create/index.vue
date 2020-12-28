@@ -1,7 +1,12 @@
 <template>
   <Content-component>
     <WaterMark-component>
-      <Form-component ref="form" :label-width="'120px'" :configs="configs">
+      <Form-component
+        ref="form"
+        label-width="120px"
+        :configs="configs"
+        :params="params"
+      >
         <el-form-item>
           <el-button type="primary" @click="submit">立即创建</el-button>
           <el-button @click="reset">重置</el-button>
@@ -14,7 +19,7 @@
 import ContentComponent from 'src/modules/component/layout/Content';
 import WaterMarkComponent from 'src/modules/component/layout/WaterMark';
 import FormComponent from 'src/modules/component/template/Form';
-import { configs } from './config/configs';
+import { configFields } from './config/configs';
 export default {
   components: {
     ContentComponent,
@@ -23,8 +28,13 @@ export default {
   },
   data() {
     return {
-      configs
+      params: {}
     };
+  },
+  computed: {
+    configs() {
+      return configFields.getFields({ params: this.params });
+    }
   },
   mounted() {
     this.$refs.form && this.$refs.form.resetParams();

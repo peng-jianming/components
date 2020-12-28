@@ -69,7 +69,7 @@ export function validateCustomize(configs, params, data) {
           ? validateMethod(params, data)
           : validateMethod(params[prop], params, data)
       )
-      .filter(result => !result)
+      .filter(result => !(result === true))
   );
 }
 

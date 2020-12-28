@@ -68,7 +68,6 @@
     "axios": "^0.21.0",
     "loadsh": "0.0.4",
     "moment": "^2.29.1",
-    "parchment": "^2.0.0-dev.2",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.4.9"
   }

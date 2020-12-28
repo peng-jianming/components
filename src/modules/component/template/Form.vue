@@ -223,14 +223,12 @@ export default {
         return [];
       }
     },
-    // 变动参数
     params: {
       type: Object,
       default() {
         return {};
       }
     },
-    // 不变参数
     data: {
       type: Object,
       default() {
@@ -260,14 +258,17 @@ export default {
       this.configs
         .filter(({ props }) => !props)
         .forEach(({ prop }) => {
-          this.$set(this.params, prop, undefined);
+          console.log(prop, this.params[prop] === undefined);
+          this.params[prop] === undefined &&
+            this.$set(this.params, prop, undefined);
         });
       // 注册复合props,并添加对应关系
       this.configs
         .filter(({ props }) => props)
         .forEach(({ props }) => {
           props.forEach(prop => {
-            this.$set(this.params, prop, undefined);
+            this.params[prop] === undefined &&
+              this.$set(this.params, prop, undefined);
           });
         });
     },
