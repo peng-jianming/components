@@ -11,9 +11,9 @@ import RichTextEidtor from 'src/modules/component/rich-text-editor';
 const DATE_FORMAT = 'yyyy-MM-dd HH:mm:ss';
 
 export const configFields = new Fields([
-  ticketType,
-  customerName,
-  phoneNumber,
+  ticketType.clone().setFormItemWidth('400px'),
+  customerName.clone().setFormItemWidth('400px'),
+  phoneNumber.clone().setFormItemWidth('400px'),
   feedbackChannel,
   problemHeppenTime
     .clone()
@@ -23,5 +23,8 @@ export const configFields = new Fields([
       '2020-12-03 00:00:00',
       ['2021-01-28 23:59:59', '2020-12-03 00:00:00']
     ]),
-  description.clone().setEditComponent(RichTextEidtor)
+  description
+    .clone()
+    .setEditComponent(RichTextEidtor)
+    .setFormItemWidth('600px')
 ]);

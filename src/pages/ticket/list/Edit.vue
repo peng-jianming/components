@@ -1,6 +1,17 @@
 <template>
-  <Edit-dialog-component btn-text="编辑" btn-type="text" @open="resetParams">
-    <Form-component :configs="configs" :params="params" :data="data" />
+  <Edit-dialog-component
+    btn-text="编辑"
+    btn-type="text"
+    @open="resetParams"
+    @submit="submit"
+  >
+    <Form-component
+      ref="form"
+      label-width="120px"
+      :configs="configs"
+      :params="params"
+      :data="data"
+    />
   </Edit-dialog-component>
 </template>
 <script>
@@ -17,6 +28,14 @@ export default {
   computed: {
     configs() {
       return editFields.getFields();
+    }
+  },
+  methods: {
+    submit() {
+      const params = this.$refs.form.submit();
+      if (params) {
+        alert('提交成功');
+      }
     }
   }
 };

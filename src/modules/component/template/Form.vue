@@ -347,11 +347,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less">
 .template-form--inline > .el-form {
   float: left;
 }
 .template-form--inline-block {
   display: inline-block;
+}
+.el-form {
+  .el-input,
+  .el-input__inner,
+  .el-select,
+  .el-autocomplete {
+    width: 100%;
+  }
 }
 </style>

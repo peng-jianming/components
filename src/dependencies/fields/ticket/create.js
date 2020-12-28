@@ -7,22 +7,19 @@ export const ticketType = new Field({
   label: '工单类型',
   type: 'select',
   enums: TicketTypeEnums,
-  required: true,
-  formItemWidth: '400px'
+  required: true
 });
 
 export const customerName = new Field({
   prop: 'customer_name',
   label: '客户名称',
-  required: true,
-  formItemWidth: '400px'
+  required: true
 });
 
 export const phoneNumber = new Field({
   prop: 'phone_number',
   label: '联系电话',
-  required: true,
-  formItemWidth: '400px'
+  required: true
 });
 
 export const feedbackChannel = new Field({
@@ -44,6 +41,5 @@ export const problemHeppenTime = new Field({
 export const description = new Field({
   prop: 'description',
   label: '问题描述',
-  required: true,
-  formItemWidth: '600px'
+  required: true
 });

@@ -25,6 +25,8 @@ export default {
           phone_number: '12345678909',
           feedback_channel: 1,
           problem_heppen_time: ['2021-01-28 23:59:59', '2020-12-03 00:00:00'],
+          problem_heppen_start_time: '2021-01-28 23:59:59',
+          problem_heppen_end_time: '2020-12-03 00:00:00',
           description: '问题描述'
         }
       ]
