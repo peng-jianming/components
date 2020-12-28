@@ -17,13 +17,11 @@ export const configFields = new Fields([
   feedbackChannel,
   problemHeppenTime
     .clone()
+    .setCustomize('valueFormat', DATE_FORMAT)
     .setDefaultValue([
       '2021-01-28 23:59:59',
       '2020-12-03 00:00:00',
       ['2021-01-28 23:59:59', '2020-12-03 00:00:00']
     ]),
-  description
-    .clone()
-    .setCustomize('valueFormat', DATE_FORMAT)
-    .setEditComponent(RichTextEidtor)
+  description.clone().setEditComponent(RichTextEidtor)
 ]);

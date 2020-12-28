@@ -18,6 +18,8 @@ module.exports = {
     'no-new': 'off',
     'prefer-const': 'off',
     'vue/no-mutating-props': 'off',
-    'vue/require-default-prop': 'off'
+    'vue/require-default-prop': 'off',
+    'vue/no-v-html': 'off',
+    'vue/no-use-v-if-with-v-for': 'off'
   }
 };
