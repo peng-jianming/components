@@ -22,7 +22,8 @@ export const configFields = new Fields([
       '2021-01-28 23:59:59',
       '2020-12-03 00:00:00',
       ['2021-01-28 23:59:59', '2020-12-03 00:00:00']
-    ]),
+    ])
+    .setFormItemWidth('600px'),
   description
     .clone()
     .setEditComponent(RichTextEidtor)
