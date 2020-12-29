@@ -28,6 +28,7 @@ export default {
       ticket: {
         ticket_id: '1000001',
         ticket_type: 1,
+        ticket_status: '建单',
         customer_name: 'pjm',
         phone_number: '12345678909',
         feedback_channel: 1,
@@ -46,7 +47,9 @@ export default {
   display: flex;
   justify-content: space-between;
   &-tool {
-    width: 200px;
+    box-sizing: border-box;
+    width: 300px;
+    padding-left: 20px;
     border-left: 1px solid #ccc;
   }
   &-content {
@@ -54,7 +57,7 @@ export default {
     &-process {
       width: 100%;
       height: 500px;
-      background-color: #ccc;
+      background-color: #eee;
     }
   }
 }

@@ -27,6 +27,7 @@
           min,
           max,
           step,
+          width,
           displayProp,
           formItemWidth,
           formItemInline,
@@ -37,6 +38,7 @@
           :key="prop"
           :required="required && !isQuery"
           :label="label"
+          :label-width="width"
           :style="{ width: formItemWidth }"
           :class="{ 'template-form--inline-block': formItemInline }"
         >
@@ -45,9 +47,9 @@
               :is="editComponent"
               v-if="editComponent"
               :ref="prop"
+              v-model="isFull ? params : params[prop]"
               :prop="prop"
               :props="props"
-              :value="isFull ? params : params[prop]"
               :class="inputClass"
               :data="isFull ? params : params[prop]"
               :value-display="params[displayProp]"

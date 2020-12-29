@@ -92,7 +92,7 @@
         <component
           :is="listComponent"
           v-if="listComponent"
-          :value="isFull ? row : row[prop]"
+          v-model="isFull ? row : row[prop]"
           v-bind="{
             ...$attrs,
             ...arg
