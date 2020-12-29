@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import createComponent from 'src/pages/ticket/create';
 Vue.use(VueRouter);
 
 const originalPush = VueRouter.prototype.push;
@@ -21,9 +20,7 @@ export const ticketRouters = [
     path: '/list',
     name: 'list',
     component: () =>
-      import(
-        /* webpackChunkName: "ticket/listComponent" */ 'src/pages/ticket/list'
-      ),
+      import(/* webpackChunkName: "ticket/list" */ 'src/pages/ticket/list'),
     meta: {
       sidebarName: '工单查询',
       sidebarIcon: 'el-icon-tickets'
@@ -32,10 +29,21 @@ export const ticketRouters = [
   {
     path: '/create',
     name: 'create',
-    component: createComponent,
+    component: () =>
+      import(/* webpackChunkName: "ticket/create" */ 'src/pages/ticket/create'),
     meta: {
       sidebarName: '创建工单',
       sidebarIcon: 'el-icon-edit-outline'
+    }
+  },
+  {
+    path: '/detail',
+    name: 'detail',
+    component: () =>
+      import(/* webpackChunkName: "ticket/detail" */ 'src/pages/ticket/detail'),
+    meta: {
+      sidebarName: '工单详情',
+      sidebarHidden: true
     }
   }
 ];

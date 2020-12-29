@@ -1,5 +1,5 @@
 import { Fields } from 'src/dependencies/fields/Fields';
-import { Field } from 'src/dependencies/fields/Field';
+// import { Field } from 'src/dependencies/fields/Field';
 import {
   ticketType,
   customerName,
@@ -8,26 +8,29 @@ import {
   problemHeppenTime,
   description
 } from 'src/dependencies/fields/ticket/create';
+import { ticketId } from 'src/dependencies/fields/ticket/detail';
 import RichTextEidtor from 'src/modules/component/rich-text-editor';
-import EditComponent from '../Edit';
+// import EditComponent from '../components/Edit';
+import TicketIdLinkComponent from '../components/TicketIdLink';
 const DATE_FORMAT = 'yyyy-MM-dd HH:mm:ss';
 
-const handle = new Field({
-  prop: 'handle',
-  label: '操作'
-});
+// const handle = new Field({
+//   prop: 'handle',
+//   label: '操作'
+// });
 
 export const listFields = new Fields([
+  ticketId.clone().setListComponent(TicketIdLinkComponent),
   ticketType,
   customerName,
   phoneNumber,
   feedbackChannel,
   problemHeppenTime,
-  description,
-  handle
-    .clone()
-    .setIsFull()
-    .setListComponent(EditComponent)
+  description
+  // handle
+  //   .clone()
+  //   .setIsFull()
+  //   .setListComponent(EditComponent)
 ]);
 
 export const editFields = new Fields([

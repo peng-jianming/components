@@ -258,7 +258,6 @@ export default {
       this.configs
         .filter(({ props }) => !props)
         .forEach(({ prop }) => {
-          console.log(prop, this.params[prop] === undefined);
           this.params[prop] === undefined &&
             this.$set(this.params, prop, undefined);
         });

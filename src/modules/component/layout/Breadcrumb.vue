@@ -15,14 +15,14 @@
     </el-card>
     <div class="page-history">
       <router-link
-        v-for="({ meta, path }, index) in cacheRoute"
+        v-for="({ meta, fullPath }, index) in cacheRoute"
         :key="index"
-        :to="path"
+        :to="fullPath"
       >
         <el-tag
           size="small"
           closable
-          :effect="$route.path === path ? 'dark' : 'light'"
+          :effect="$route.fullPath === fullPath ? 'dark' : 'light'"
           @close.prevent="handleClose(index)"
         >
           {{ meta.sidebarName }}
@@ -47,7 +47,7 @@ export default {
   watch: {
     $route(val) {
       // 切换路由时判断当前路由是否有存
-      this.cacheRoute.every(({ path }) => path !== val.path) &&
+      this.cacheRoute.every(({ fullPath }) => fullPath !== val.fullPath) &&
         this.cacheRoute.push(val);
     }
   },

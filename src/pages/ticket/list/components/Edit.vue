@@ -17,7 +17,7 @@
 <script>
 import EditDialogComponent from 'src/modules/component/EditDialog';
 import FormComponent from 'src/modules/component/template/Form';
-import { editFields } from './config/config';
+import { editFields } from '../config/config';
 import EditDataMinxin from 'src/modules/mixins/edit-data';
 export default {
   components: {
