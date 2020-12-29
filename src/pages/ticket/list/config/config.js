@@ -7,8 +7,8 @@ import {
   feedbackChannel,
   problemHeppenTime,
   description
-} from 'src/dependencies/fields/ticket/create';
-import { ticketId } from 'src/dependencies/fields/ticket/detail';
+} from 'src/dependencies/fields/ticket/create/create';
+import { ticketId } from 'src/dependencies/fields/ticket/detail/detail';
 import RichTextEidtor from 'src/modules/component/rich-text-editor';
 // import EditComponent from '../components/Edit';
 import TicketIdLinkComponent from '../components/TicketIdLink';

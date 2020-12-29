@@ -4,12 +4,12 @@ import {
   customerName,
   phoneNumber,
   feedbackChannel
-} from 'src/dependencies/fields/ticket/create';
+} from 'src/dependencies/fields/ticket/create/create';
 import {
   ticketId,
   createTime,
   ticketStatus
-} from 'src/dependencies/fields/ticket/detail';
+} from 'src/dependencies/fields/ticket/detail/detail';
 
 export const customerConfigFields = new Fields([customerName, phoneNumber]);
 

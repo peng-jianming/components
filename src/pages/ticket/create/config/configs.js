@@ -6,7 +6,7 @@ import {
   feedbackChannel,
   problemHeppenTime,
   description
-} from 'src/dependencies/fields/ticket/create';
+} from 'src/dependencies/fields/ticket/create/create';
 import RichTextEidtor from 'src/modules/component/rich-text-editor';
 const DATE_FORMAT = 'yyyy-MM-dd HH:mm:ss';
 

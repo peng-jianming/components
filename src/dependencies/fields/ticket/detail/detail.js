@@ -1,4 +1,5 @@
-import { Field } from '../Field';
+import { Field } from '../../Field';
+import TicketStatusEnums from 'src/dependencies/enums/ticket/detail/TicketStatus';
 
 export const ticketId = new Field({
   prop: 'ticket_id',
@@ -12,5 +13,7 @@ export const createTime = new Field({
 
 export const ticketStatus = new Field({
   prop: 'ticket_status',
-  label: '工单状态'
+  label: '工单状态',
+  type: 'select',
+  enums: TicketStatusEnums
 });

@@ -28,7 +28,7 @@ export default {
       ticket: {
         ticket_id: '1000001',
         ticket_type: 1,
-        ticket_status: '建单',
+        ticket_status: 1,
         customer_name: 'pjm',
         phone_number: '12345678909',
         feedback_channel: 1,
