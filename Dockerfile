@@ -7,11 +7,12 @@ WORKDIR /app
 # 在WORKDIR之后,COPY命令就是相对于/app运行的
 # 将当前文件全部拷贝到/app里面
 COPY . .
-RUN ls -l
+
 RUN npm install
 
 RUN npm run build
-
+RUN ls -l
+RUN pwd
 # production stage
 FROM nginx:stable-alpine as production-stage
 
