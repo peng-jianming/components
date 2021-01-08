@@ -8,7 +8,7 @@ WORKDIR /app
 # 将当前文件全部拷贝到/app里面
 COPY . .
 
-RUN npm install
+RUN npm install --registry=hrrps://registry.npm.taobao.org
 
 RUN npm run build
 
