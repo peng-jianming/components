@@ -1,0 +1,30 @@
+node_modules
+.DS_Store
+dist
+
+# node-waf configuration
+.lock-wscript
+
+build/Release
+.dockerignore
+Dockerfile
+*docker-compose*
+
+# Logs
+Logs
+*.log
+
+# Runtime data
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+pdis
+*.pdi
+*.seed
+.git
+.hg
+.svn
