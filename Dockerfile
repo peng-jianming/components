@@ -17,7 +17,7 @@ FROM nginx:stable-alpine as production-stage
 
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-RUN whereis nginx.conf
+RUN ls -l
 
 RUN ls -l /usr/share/nginx/html
 
