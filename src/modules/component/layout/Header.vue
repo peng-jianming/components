@@ -24,17 +24,17 @@ export default {
         {
           id: '1',
           name: '与我相关',
-          link: '/workbench'
+          link: '/workbench/'
         },
         {
           id: '2',
           name: '客服工单',
-          link: '/ticket'
+          link: '/ticket/'
         },
         {
           id: '3',
           name: '系统设置',
-          link: '/admin'
+          link: '/admin/'
         }
       ]
     };
