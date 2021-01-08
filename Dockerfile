@@ -1,7 +1,7 @@
 # build stage
 # 创建构建依赖的基础镜像,该阶段生成的镜像命名为build-stage
 # 之后COPY --FROM=<name>可以引用此阶段生成的镜像
-FROM node:10 as build-stage
+FROM node:lts-alpine as build-stage
 # 创建一个工作目录
 WORKDIR /app
 # 在WORKDIR之后,COPY命令就是相对于/app运行的
