@@ -16,6 +16,15 @@
   <meta name="Copyright" content="<%= htmlWebpackPlugin.options.configs.copyright %>" />
   <meta name="Description" content="<%= htmlWebpackPlugin.options.configs.descriptions %>" />
   <meta name="Keywords" content="<%= htmlWebpackPlugin.options.configs.keywords %>" />
+  <!-- 无侵入式静态资源自动重试 -->
+  <% if(htmlWebpackPlugin.options.plugins.assetsRetryConfig) { %>
+  <script>
+    <%= htmlWebpackPlugin.options.plugins.assetsRetry %>
+  </script>
+  <script>
+    window.assetsRetryStatistics = window.assetsRetry(<%= htmlWebpackPlugin.options.plugins.assetsRetryConfig %>);
+  </script>
+  <% } %>
   <!--开始注入配置文件的css-->
   <% Array.isArray(htmlWebpackPlugin.options.configs.css) &&
     htmlWebpackPlugin.options.configs.css.forEach(function(css) { %>

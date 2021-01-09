@@ -67,6 +67,7 @@
     "webpack-merge": "^5.4.1"
   },
   "dependencies": {
+    "assets-retry": "^0.3.0",
     "axios": "^0.21.0",
     "loadsh": "0.0.4",
     "moment": "^2.29.1",

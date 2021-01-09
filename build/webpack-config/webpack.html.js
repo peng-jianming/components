@@ -23,10 +23,11 @@ const handleHTMLPlugin = (key, myPage, myConfigs, production = false) => {
       : false,
     cache: true,
     configs: myConfigs,
-    // plugins: {
-    //   assetsRetry: fs.readFileSync(require.resolve("assets-retry")),
-    //   assetsRetryConfig: feflowConfig.assetsRetryConfig,
-    // },
+    plugins: {
+      assetsRetry: fs.readFileSync(require.resolve('assets-retry')),
+      assetsRetryConfig: require(paths.templateEntryConfigPath())
+        .assetsRetryConfig
+    },
     chunks: production ? [MANIFEST, VENDOR, key] : [key],
     chunksSortMode: 'manual'
   };
