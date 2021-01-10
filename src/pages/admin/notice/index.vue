@@ -1,5 +1,5 @@
 <template>
-  <Content-component>客服公告,de</Content-component>
+  <Content-component>客服公告,develop</Content-component>
 </template>
 <script>
 import ContentComponent from 'src/modules/component/layout/Content';
