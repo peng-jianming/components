@@ -1,16 +1,20 @@
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 .DS_Store
+dist
 
 # node-waf configuration
 .lock-wscript
 
+# Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 .dockerignore
 Dockerfile
 *docker-compose*
 
 # Logs
-Logs
+logs
 *.log
 
 # Runtime data
@@ -21,8 +25,8 @@ Logs
 *.njsproj
 *.sln
 *.sw*
-pdis
-*.pdi
+pids
+*.pid
 *.seed
 .git
 .hg
