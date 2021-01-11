@@ -13,8 +13,8 @@ const insetScript = async src => {
 singleSpa.registerApplication(
   'manage-permission-spa',
   async () => {
-    await insetScript('http://localhost:8080/js/chunk-vendors.js');
-    await insetScript('http://localhost:8080/js/app.js');
+    await insetScript('http://8.129.90.25:9000/js/chunk-vendors.70b80d13.js');
+    await insetScript('http://8.129.90.25:9000/js/app.581647cf.js');
     return window.managePermission;
   },
   location => location.hash.endsWith('/permission/manage')
