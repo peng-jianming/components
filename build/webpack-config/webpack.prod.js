@@ -1,8 +1,10 @@
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
   mode: 'production',
+  plugins: [new WebpackManifestPlugin({})],
   optimization: {
     minimize: true,
     minimizer: [
