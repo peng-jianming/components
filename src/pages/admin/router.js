@@ -34,7 +34,7 @@ export const adminRouters = [
             /* webpackChunkName: "admin/manage" */ 'src/pages/admin/permission/manage'
           ),
         meta: {
-          sidebarName: '客服权限'
+          sidebarName: '客服权限(single-spa项目)'
         }
       }
     ]
