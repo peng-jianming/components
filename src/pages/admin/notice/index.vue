@@ -1,11 +1,3 @@
 <template>
-  <Content-component>客服公告</Content-component>
+  <div>客服公告</div>
 </template>
-<script>
-import ContentComponent from 'src/modules/component/layout/Content';
-export default {
-  components: {
-    ContentComponent
-  }
-};
-</script>

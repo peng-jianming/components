@@ -5,12 +5,11 @@
         <el-breadcrumb-item>
           {{ baseTitle }}
         </el-breadcrumb-item>
-        <el-breadcrumb-item
-          v-for="({ meta }, index) in $route.matched"
-          :key="index"
-        >
-          {{ meta.sidebarName }}
-        </el-breadcrumb-item>
+        <template v-for="({ meta }, index) in $route.matched">
+          <el-breadcrumb-item v-if="meta.sidebarName" :key="index">
+            {{ meta.sidebarName }}
+          </el-breadcrumb-item>
+        </template>
       </el-breadcrumb>
     </el-card>
     <div class="page-history">
@@ -22,7 +21,7 @@
         <el-tag
           size="small"
           closable
-          :effect="$route.fullPath === fullPath ? 'dark' : 'light'"
+          :effect="$route.fullPath.includes(fullPath) ? 'dark' : 'light'"
           @close.prevent="handleClose(index)"
         >
           {{ meta.sidebarName }}
@@ -47,7 +46,9 @@ export default {
   watch: {
     $route(val) {
       // 切换路由时判断当前路由是否有存
+      console.log(val);
       this.cacheRoute.every(({ fullPath }) => fullPath !== val.fullPath) &&
+        val.meta.sidebarName &&
         this.cacheRoute.push(val);
     }
   },
