@@ -7,7 +7,13 @@
       <Sidebar-component :sidebar-menu="ticketRouters" />
       <el-container direction="vertical">
         <Breadcrumb-component :base-title="baseTitle" />
-        <router-view></router-view>
+        <Content-component>
+          <WaterMark-component>
+            <div id="qiankun-container">
+              <!-- <router-view></router-view> -->
+            </div>
+          </WaterMark-component>
+        </Content-component>
       </el-container>
     </el-container>
   </el-container>
@@ -17,12 +23,16 @@
 import HeaderComponent from 'src/modules/component/layout/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
+import ContentComponent from 'src/modules/component/layout/Content';
+import WaterMarkComponent from 'src/modules/component/layout/WaterMark';
 import { ticketRouters } from './router';
 export default {
   components: {
     HeaderComponent,
     SidebarComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    ContentComponent,
+    WaterMarkComponent
   },
   data() {
     return {
@@ -32,3 +42,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.el-header {
+  padding: 0;
+}
+</style>

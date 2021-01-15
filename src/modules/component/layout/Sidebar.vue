@@ -9,9 +9,20 @@
         active-text-color="#ffd04b"
         router
       >
-        <div v-for="{ path, meta, children } in sidebarMenu" :key="path">
+        <div
+          v-for="{
+            path,
+            meta,
+            children,
+            isHiddenChildrenSidebar
+          } in sidebarMenu"
+          :key="path"
+        >
           <template v-if="!meta.sidebarHidden">
-            <el-submenu v-if="hasChildren(children)" :index="path">
+            <el-submenu
+              v-if="hasChildren(children) && !isHiddenChildrenSidebar"
+              :index="path"
+            >
               <template slot="title">
                 <i :class="meta.sidebarIcon"></i>
                 <span>{{ meta.sidebarName }}</span>

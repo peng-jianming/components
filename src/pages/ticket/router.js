@@ -29,12 +29,30 @@ export const ticketRouters = [
   {
     path: '/create',
     name: 'create',
-    component: () =>
-      import(/* webpackChunkName: "ticket/create" */ 'src/pages/ticket/create'),
+    // component: { render: e => e('router-view') },
+    // component: () =>
+    //   import(/* webpackChunkName: "ticket/create" */ 'src/pages/ticket/create'),
     meta: {
       sidebarName: '创建工单',
       sidebarIcon: 'el-icon-edit-outline'
     }
+    // isHiddenChildrenSidebar: true,
+    // children: [
+    //   {
+    //     path: 'one',
+    //     children: [
+    //       {
+    //         path: 'one'
+    //       },
+    //       {
+    //         path: 'two'
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     path: 'two'
+    //   }
+    // ]
   },
   {
     path: '/detail',
@@ -49,6 +67,8 @@ export const ticketRouters = [
 ];
 
 const router = new VueRouter({
+  mode: 'history',
+  base: '/ticket',
   routes: ticketRouters
 });
 

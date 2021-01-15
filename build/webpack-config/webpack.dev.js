@@ -11,13 +11,13 @@ module.exports = {
     historyApiFallback: true,
     index: 'index.html',
     clientLogLevel: 'silent',
-    disableHostCheck: true,
-    proxy: {
-      '/': {
-        target: 'http://localhost:3000',
-        pathRewrite: { '/': '' }
-      }
-    }
+    disableHostCheck: true
+    // proxy: {
+    //   '/': {
+    //     target: 'http://localhost:3000',
+    //     pathRewrite: { '/': '' }
+    //   }
+    // }
   },
   plugins: [new webpack.HotModuleReplacementPlugin({})]
 };

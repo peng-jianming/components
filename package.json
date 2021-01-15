@@ -73,6 +73,7 @@
     "loadsh": "0.0.4",
     "moment": "^2.29.1",
     "nl2br": "0.0.3",
+    "qiankun": "^2.3.5",
     "query-string": "^6.13.8",
     "single-spa": "^5.9.0",
     "vue-quill-editor": "^3.0.6"
