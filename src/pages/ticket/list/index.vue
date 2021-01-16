@@ -1,19 +1,11 @@
 <template>
-  <Content-component>
-    <Water-mark-component>
-      <Table-component :datas="list" :configs="configs" />
-    </Water-mark-component>
-  </Content-component>
+  <Table-component :datas="list" :configs="configs" />
 </template>
 <script>
-import ContentComponent from 'src/modules/component/layout/Content';
-import WaterMarkComponent from 'src/modules/component/layout/WaterMark';
 import TableComponent from 'src/modules/component/template/Table';
 import { listFields } from './config/config';
 export default {
   components: {
-    ContentComponent,
-    WaterMarkComponent,
     TableComponent
   },
   data() {

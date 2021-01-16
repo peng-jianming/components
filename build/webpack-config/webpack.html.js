@@ -8,6 +8,7 @@ const MANIFEST = 'manifest';
 const VENDOR = 'vendor';
 
 const handleHTMLPlugin = (key, myPage, myConfigs, production = false) => {
+  console.log(key);
   const opts = {
     filename: path
       .join(key, 'index.html')
@@ -24,9 +25,12 @@ const handleHTMLPlugin = (key, myPage, myConfigs, production = false) => {
     cache: true,
     configs: myConfigs,
     plugins: {
+      // 使用qiankun,子应用路由懒加载时,由于assets-retry影响,会出现问题
+      // 子应用使用assets-retry,打包后,给qiankun使用,也会出现问题
       assetsRetry: fs.readFileSync(require.resolve('assets-retry')),
-      assetsRetryConfig: require(paths.templateEntryConfigPath())
-        .assetsRetryConfig
+      assetsRetryConfig:
+        key !== 'ticket' &&
+        require(paths.templateEntryConfigPath()).assetsRetryConfig
     },
     chunks: production ? [MANIFEST, VENDOR, key] : [key],
     chunksSortMode: 'manual'

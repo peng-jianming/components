@@ -9,9 +9,8 @@
         <Breadcrumb-component :base-title="baseTitle" />
         <Content-component>
           <WaterMark-component>
-            <div id="qiankun-container">
-              <!-- <router-view></router-view> -->
-            </div>
+            <router-view></router-view>
+            <div id="qiankun-container"></div>
           </WaterMark-component>
         </Content-component>
       </el-container>
@@ -42,8 +41,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.el-header {
-  padding: 0;
-}
-</style>

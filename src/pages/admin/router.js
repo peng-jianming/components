@@ -34,7 +34,7 @@ export const adminRouters = [
             /* webpackChunkName: "admin/manage" */ 'src/pages/admin/permission/manage'
           ),
         meta: {
-          sidebarName: '客服权限(single-spa项目)'
+          sidebarName: '客服权限(single-spa应用)'
         },
         // 保证路径,需要和分离模块的路由一致
         // 因为,路由嵌套的原因,如果分离模块的路由跳转了,在基座模块找不到所挂载的模块和路由,会出现错误

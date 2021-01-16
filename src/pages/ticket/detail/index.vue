@@ -1,26 +1,18 @@
 <template>
-  <Content-component>
-    <Water-mark-component>
-      <div class="page-detail">
-        <div class="page-detail-content">
-          <div class="page-detail-content-process"></div>
-          <div class="page-detail-content-operation"></div>
-        </div>
-        <div class="page-detail-tool">
-          <Information-component :ticket="ticket" />
-        </div>
-      </div>
-    </Water-mark-component>
-  </Content-component>
+  <div class="page-detail">
+    <div class="page-detail-content">
+      <div class="page-detail-content-process"></div>
+      <div class="page-detail-content-operation"></div>
+    </div>
+    <div class="page-detail-tool">
+      <Information-component :ticket="ticket" />
+    </div>
+  </div>
 </template>
 <script>
-import ContentComponent from 'src/modules/component/layout/Content';
-import WaterMarkComponent from 'src/modules/component/layout/WaterMark';
 import InformationComponent from './components/Information';
 export default {
   components: {
-    ContentComponent,
-    WaterMarkComponent,
     InformationComponent
   },
   data() {
