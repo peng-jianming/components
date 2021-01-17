@@ -24,14 +24,12 @@ const apps = [
     // 当activeWhen为true时,将触发该方法,挂载app,需返回暴露出来的全局变量
     app: async () => {
       await insetScript(
-        'http://8.129.90.25:9000/admin/static/vendor.1.26e7843d1fbfff010b2e.js'
+        '//8.129.90.25:9000/static/vendor.5.a912a54258a0e2641e03.js'
       );
       await insetScript(
-        'http://8.129.90.25:9000/admin/static/main/index.a63c24ab6bc9fd855ffa.js'
+        '//8.129.90.25:9000/static/main/index.e27818e66f20f208f404.js'
       );
-      insetCss(
-        'http://8.129.90.25:9000/admin/static/main/index.ad87c26f69b2030d7fa2.css'
-      );
+      insetCss('//8.129.90.25:9000/static/main/index.c1f4d9d2118c9fdf5b6a.css');
       return window.managePermission;
     },
     // location匹配
