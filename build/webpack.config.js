@@ -108,7 +108,6 @@ const baseConfig = {
   },
   externals: {
     vue: 'Vue',
-    'element-ui': 'ELEMENT',
     'vue-router': 'VueRouter'
   },
   stats: {

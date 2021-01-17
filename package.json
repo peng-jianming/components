@@ -70,6 +70,7 @@
   "dependencies": {
     "assets-retry": "^0.3.0",
     "axios": "^0.21.0",
+    "element-ui": "^2.15.0",
     "loadsh": "0.0.4",
     "moment": "^2.29.1",
     "nl2br": "0.0.3",

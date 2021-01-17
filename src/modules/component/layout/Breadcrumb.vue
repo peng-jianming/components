@@ -46,7 +46,6 @@ export default {
   watch: {
     $route(val) {
       // 切换路由时判断当前路由是否有存
-      console.log(val);
       this.cacheRoute.every(({ fullPath }) => fullPath !== val.fullPath) &&
         val.meta.sidebarName &&
         this.cacheRoute.push(val);

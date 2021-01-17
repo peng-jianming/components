@@ -8,7 +8,6 @@ const MANIFEST = 'manifest';
 const VENDOR = 'vendor';
 
 const handleHTMLPlugin = (key, myPage, myConfigs, production = false) => {
-  console.log(key);
   const opts = {
     filename: path
       .join(key, 'index.html')
