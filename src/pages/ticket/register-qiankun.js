@@ -1,5 +1,7 @@
 import { registerMicroApps, start } from 'qiankun';
+import { Loading } from 'element-ui';
 
+let loadingInstance = null;
 const apps = [
   {
     name: 'createTicket',
@@ -8,7 +10,18 @@ const apps = [
     container: '#qiankun-container',
     activeRule: location => location.pathname.startsWith('/ticket/create'),
     loader: loading => {
-      console.log(`loading---变化了,当前状态${loading}`);
+      console.log(`loading变化了,当前状态: ${loading}`);
+      if (loading) {
+        loadingInstance = Loading.service({
+          fullscreen: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+      } else {
+        loadingInstance.close();
+        loadingInstance = null;
+      }
     }
   }
 ];
@@ -31,4 +44,4 @@ registerMicroApps(apps, {
   ]
 });
 
-start();
+export default start;

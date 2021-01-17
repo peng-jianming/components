@@ -10,3 +10,7 @@
 - ## [Jest自动化测试的使用](https://juejin.cn/post/6914261906865946631)
 
 - ## [CICD持续集成部署使用(github+jenkins+docker+nginx)](https://juejin.cn/post/6916016350490001415)
+
+- ## [微前端single-spa与qiankun的使用](https://juejin.cn/post/6917245057896710158)
+
+- ## [静态资源自动重试方案](https://juejin.cn/post/6918648841105309709)
