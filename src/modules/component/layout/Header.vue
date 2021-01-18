@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <div class="page-logo">
-      <!-- <img :src="logo" /> -->
+      <img :src="logo" />
     </div>
     <ul class="page-menu clearfloat">
       <li v-for="item in menus" :key="item.id" class="menu-item">
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-// import logo from 'src/modules/img/logo.png';
+import logo from 'src/modules/img/logo1.png';
 export default {
   data() {
     return {
-      // logo,
+      logo,
       menus: [
         {
           id: '1',
