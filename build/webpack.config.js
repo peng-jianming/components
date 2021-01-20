@@ -10,6 +10,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 const { merge } = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -98,6 +99,9 @@ const baseConfig = {
         ':percent'
       )} (:elapsed seconds) :msg`,
       clear: true
+    }),
+    new CopyPlugin({
+      patterns: [path.resolve(__dirname, '../template/favicon.ico')]
     })
   ],
   resolve: {

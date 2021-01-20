@@ -16,6 +16,7 @@
   <meta name="Copyright" content="<%= htmlWebpackPlugin.options.configs.copyright %>" />
   <meta name="Description" content="<%= htmlWebpackPlugin.options.configs.descriptions %>" />
   <meta name="Keywords" content="<%= htmlWebpackPlugin.options.configs.keywords %>" />
+  <link rel="manifest" href="<%= htmlWebpackPlugin.options.configs.manifest %>">
   <!-- 无侵入式静态资源自动重试 -->
   <% if(htmlWebpackPlugin.options.plugins.assetsRetryConfig) { %>
   <script>
