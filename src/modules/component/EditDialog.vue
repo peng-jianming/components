@@ -104,7 +104,7 @@ export default {
     },
     btnSize: {
       type: String,
-      default: 'small'
+      default: 'medium'
     },
     dialogTop: {
       type: String,

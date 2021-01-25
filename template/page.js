@@ -3,7 +3,7 @@ module.exports = {
   icon: '/favicon.ico',
   descriptions: 'webpack-devkit',
   keywords: 'webpack-devkit',
-  manifest: '/manifest.json',
+  manifest: '',
   css: [],
   script: [
     '//cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js',

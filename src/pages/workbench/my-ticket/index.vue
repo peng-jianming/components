@@ -1,18 +1,15 @@
 <template>
-  <Content-component>
+  <div>
     <div>
       我的工单
     </div>
     <el-button type="primary" @click="getRandomImage">获取随机图片</el-button>
     <el-image :src="img"></el-image>
-  </Content-component>
+  </div>
 </template>
 <script>
-import ContentComponent from 'src/modules/component/layout/Content';
+import { getTest } from 'src/dependencies/api/workbench/my-ticket';
 export default {
-  components: {
-    ContentComponent
-  },
   data() {
     return {
       imgs: [
@@ -30,8 +27,9 @@ export default {
       img: ''
     };
   },
-  mounted() {
+  async mounted() {
     this.getRandomImage();
+    await getTest();
   },
   methods: {
     getRandomImage() {

@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-export const getRandomImage = () => {
+export const getTest = ({ config = { loading: false } } = {}) => {
   return axios.request({
-    url: '/images',
-    method: 'get'
+    url: '/test',
+    method: 'get',
+    ...config
   });
 };

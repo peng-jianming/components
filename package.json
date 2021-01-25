@@ -79,6 +79,7 @@
     "qiankun": "^2.3.5",
     "query-string": "^6.13.8",
     "single-spa": "^5.9.0",
+    "uuid": "^8.3.2",
     "vue-quill-editor": "^3.0.6"
   }
 }

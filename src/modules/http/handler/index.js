@@ -1,7 +1,9 @@
 import axios from 'axios';
 import debounceHandler from './debounce';
+import loadingHandler from './loading';
+import errorHandler from './error';
 
-export const handlers = [debounceHandler];
+export const handlers = [debounceHandler, loadingHandler, errorHandler];
 
 // 如需继续处理需要返回config
 const normalResolve = config => {

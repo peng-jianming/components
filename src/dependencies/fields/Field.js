@@ -54,7 +54,8 @@ export class Field {
     inputClass,
     isCopy,
     placeholder,
-    formItemWidth
+    formItemWidth,
+    validateMethod
   }) {
     this.prop = prop;
     this.label = label;
@@ -70,6 +71,7 @@ export class Field {
     this.isCopy = isCopy;
     this.placeholder = placeholder;
     this.formItemWidth = formItemWidth;
+    this.validateMethod = validateMethod;
     // 默认情况为永久展示
     this.showCondition = () => true;
   }

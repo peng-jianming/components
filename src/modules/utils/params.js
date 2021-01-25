@@ -117,3 +117,21 @@ export function validateWithMessage(configs, params, data) {
     return true;
   }
 }
+
+// 移除不在配置文件中的数据
+export function filterNotInConfigs(configs = [], params = {}) {
+  const configKeys = configs.reduce(
+    (propKeys, { prop, props }) => propKeys.concat(prop).concat(props),
+    []
+  );
+  Object.keys(params)
+    .filter(key => !configKeys.includes(key))
+    .forEach(key => {
+      // 需要修改原始params
+      // eslint-disable-next-line no-param-reassign
+      params[key] = undefined;
+      // eslint-disable-next-line no-param-reassign
+      delete params[key];
+    });
+  return params;
+}
