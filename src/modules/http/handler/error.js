@@ -40,7 +40,7 @@ export default {
     }
     if (status === 401) {
       promise = errorMessage({ status }).then(() => {
-        location.href = `/login/?redirect=${location.pathname + location.hash}`;
+        location.href = `/login?redirect=${location.pathname + location.hash}`;
       });
     } else if (status === 422) {
       let message = data.message;
