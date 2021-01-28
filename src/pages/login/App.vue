@@ -98,7 +98,7 @@ export default {
       const { data } = await postRegister({
         data: {
           ...params,
-          uuid: this.uuid
+          uuid: this.registerCaptchaUuid
         }
       });
       if (data && data.code === 0) {

@@ -1,8 +1,6 @@
 <template>
   <div class="page-header">
-    <div class="page-logo">
-      <img :src="logo" />
-    </div>
+    <div class="page-logo"></div>
     <ul class="page-menu clearfloat">
       <li v-for="item in menus" :key="item.id" class="menu-item">
         <a :href="item.link">{{ item.name }}</a>
@@ -45,7 +43,6 @@
 
 <script>
 import EditFormDialogComponent from 'src/modules/component/EditFormDialog';
-import logo from 'src/modules/img/logo.png';
 import { userConfig, passwordConfig } from './config';
 import storage from 'src/modules/utils/storage';
 import { patchChangePassword } from 'src/dependencies/api/user';
@@ -58,7 +55,6 @@ export default {
   },
   data() {
     return {
-      logo,
       menus: [
         {
           id: '1',
