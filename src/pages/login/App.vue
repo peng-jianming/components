@@ -6,7 +6,7 @@
         label-width="70px"
         label-position="left"
         :configs="loginConfigs"
-        :uuid="uuid"
+        :login-captcha-uuid="loginCaptchaUuid"
       >
         <div class="login-process">
           <edit-form-dialog-component
@@ -18,7 +18,7 @@
             width="600px"
             title="注册"
             is-register
-            :uuid="uuid"
+            :register-captcha-uuid="registerCaptchaUuid"
             :configs="registerConfigs"
             @submit="registerSubmit"
           />
@@ -54,10 +54,9 @@ import {
   postRetrieve
 } from 'src/dependencies/api/login/index';
 import storage from 'src/modules/utils/storage';
+import { getURIParams } from 'src/modules/utils/uri';
 
-const { save: setUUID, get: getUUID } = storage('uuid');
-
-const { save: setToken } = storage('token');
+const { save: setToken, get: getToken } = storage('token');
 
 export default {
   components: {
@@ -69,16 +68,14 @@ export default {
       loginConfigs,
       registerConfigs,
       retrieveConfigs,
-      uuid: ''
+      loginCaptchaUuid: '',
+      registerCaptchaUuid: ''
     };
   },
-  mounted() {
-    if (getUUID()) {
-      this.uuid = getUUID();
-    } else {
-      this.uuid = uuidv4();
-      setUUID(this.uuid);
-    }
+  created() {
+    if (getToken()) location.href = '/';
+    this.loginCaptchaUuid = uuidv4();
+    this.registerCaptchaUuid = uuidv4();
   },
   methods: {
     async submit() {
@@ -86,12 +83,14 @@ export default {
       const { data } = await postLogin({
         data: {
           ...params,
-          uuid: this.uuid
+          uuid: this.loginCaptchaUuid
         }
       });
       if (data && data.code === 0) {
         setToken(data.data.token);
-        location.href = '/';
+        location.href = getURIParams().redirect
+          ? `${getURIParams().redirect}${location.hash}`
+          : '/';
       } else {
         this.$refs.form.$refs.captcha_code[0].getCaptcha();
       }

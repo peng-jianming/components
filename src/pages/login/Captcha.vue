@@ -32,9 +32,13 @@ export default {
         return {};
       }
     },
-    uuid: {
+    loginCaptchaUuid: {
       type: String,
-      require: true
+      default: ''
+    },
+    registerCaptchaUuid: {
+      type: String,
+      default: ''
     },
     isRegister: {
       type: Boolean,
@@ -50,13 +54,13 @@ export default {
     };
   },
   created() {
-    this.getCaptcha();
+    !this.isRegister && this.getCaptcha();
   },
   methods: {
     async getCaptcha() {
       const { data } = await getCaptcha({
         query: {
-          uuid: this.uuid
+          uuid: this.loginCaptchaUuid
         }
       });
       if (data && data.code === 0) {
@@ -68,7 +72,7 @@ export default {
       const { data } = await postSendCaptchaEmail({
         data: {
           email: this.data[email.prop],
-          uuid: this.uuid
+          uuid: this.registerCaptchaUuid
         }
       });
       if (data && data.code === 0) {

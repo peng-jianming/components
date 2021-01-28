@@ -16,7 +16,7 @@ const openLoading = config => {
 
 const closeLoading = response => {
   const config = response.config || {};
-  if (config && config.loading.close) {
+  if (config && config.loading) {
     config.loading.close();
   }
 };

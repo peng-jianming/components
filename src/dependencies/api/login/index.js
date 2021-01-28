@@ -6,7 +6,7 @@ export const getCaptcha = ({
 } = {}) => {
   return axios.request({
     params: query,
-    url: '/login/api/captcha',
+    url: '/api/login/captcha',
     method: 'get',
     ...config
   });
@@ -18,7 +18,7 @@ export const postSendCaptchaEmail = ({
 } = {}) => {
   return axios.request({
     data,
-    url: '/login/api/sendCaptchaEmail',
+    url: '/api/login/sendCaptchaEmail',
     method: 'post',
     ...config
   });
@@ -30,7 +30,7 @@ export const postRegister = ({
 } = {}) => {
   return axios.request({
     data,
-    url: '/login/api/register',
+    url: '/api/login/register',
     method: 'post',
     ...config
   });
@@ -42,7 +42,7 @@ export const postRetrieve = ({
 } = {}) => {
   return axios.request({
     data,
-    url: '/login/api/retrieve',
+    url: '/api/login/retrieve',
     method: 'post',
     ...config
   });
@@ -51,7 +51,7 @@ export const postRetrieve = ({
 export const postLogin = ({ data = {}, config = { loading: false } } = {}) => {
   return axios.request({
     data,
-    url: '/login/api/login',
+    url: '/api/login',
     method: 'post',
     ...config
   });

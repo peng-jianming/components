@@ -170,6 +170,14 @@
               :disabled="disabled"
             />
             <el-input
+              v-else-if="type === 'password'"
+              v-model="params[prop]"
+              type="password"
+              :class="inputClass"
+              :placeholder="placeholder || `请输入${label}`"
+              :disabled="disabled"
+            />
+            <el-input
               v-else
               v-model="params[prop]"
               :class="inputClass"

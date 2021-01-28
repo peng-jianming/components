@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { registerHandler, handlers } from './handler';
+import storage from 'src/modules/utils/storage';
+
+const { get: getToken } = storage('token');
 
 const Http = {};
+axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 
 Http.install = Vue => {
   registerHandler(handlers);

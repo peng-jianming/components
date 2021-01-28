@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import HeaderComponent from 'src/modules/component/layout/Header';
+import HeaderComponent from 'src/modules/component/layout/header/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
 import ContentComponent from 'src/modules/component/layout/Content';
@@ -33,6 +33,9 @@ export default {
       baseTitle: '与我相关',
       workbenchRouters
     };
+  },
+  created() {
+    this.$store.dispatch('getUser');
   }
 };
 </script>

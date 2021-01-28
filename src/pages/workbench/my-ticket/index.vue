@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import { getTest } from 'src/dependencies/api/workbench/my-ticket';
+// import { getTest } from 'src/dependencies/api/workbench/my-ticket';
 export default {
   data() {
     return {
@@ -29,7 +29,7 @@ export default {
   },
   async mounted() {
     this.getRandomImage();
-    await getTest();
+    // await getTest();
   },
   methods: {
     getRandomImage() {

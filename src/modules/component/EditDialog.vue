@@ -17,8 +17,7 @@
       :top="dialogTop"
       :visible.sync="isShow"
       custom-class="edit-dialog"
-      :modal-append-to-body="false"
-      :append-to-body="true"
+      :append-to-body="appendToBody"
       :lock-scroll="true"
       :title="title"
       @open="opened"
@@ -78,6 +77,10 @@ export default {
     footerFlex: {
       type: String,
       default: 'main:right'
+    },
+    appendToBody: {
+      type: Boolean,
+      default: false
     },
     icon: {
       type: String

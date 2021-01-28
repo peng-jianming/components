@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import HeaderComponent from 'src/modules/component/layout/Header';
+import HeaderComponent from 'src/modules/component/layout/header/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
 import ContentComponent from 'src/modules/component/layout/Content';
@@ -34,6 +34,9 @@ export default {
       baseTitle: '系统设置',
       adminRouters
     };
+  },
+  created() {
+    this.$store.dispatch('getUser');
   }
 };
 </script>

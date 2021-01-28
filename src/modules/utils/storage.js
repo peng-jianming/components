@@ -4,5 +4,8 @@ export default key => ({
   },
   get() {
     return localStorage.getItem(key);
+  },
+  remove() {
+    return localStorage.removeItem(key);
   }
 });
