@@ -56,7 +56,7 @@ import {
 import storage from 'src/modules/utils/storage';
 import { getURIParams } from 'src/modules/utils/uri';
 
-const { save: setToken, get: getToken } = storage('token');
+const { save: setToken } = storage('token');
 
 export default {
   components: {
@@ -73,7 +73,6 @@ export default {
     };
   },
   created() {
-    if (getToken()) location.href = '/';
     this.loginCaptchaUuid = uuidv4();
     this.registerCaptchaUuid = uuidv4();
   },

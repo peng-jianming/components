@@ -94,7 +94,7 @@ export default {
         type: 'warning'
       }).then(() => {
         removeToken();
-        location.href = '/login';
+        location.href = '/login/';
       });
     },
     submit(data) {
