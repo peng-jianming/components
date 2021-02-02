@@ -9,7 +9,7 @@ import {
   ticketId,
   createTime,
   ticketStatus
-} from 'src/dependencies/fields/ticket/detail/detail';
+} from 'src/dependencies/fields/ticket/list/list';
 
 export const customerConfigFields = new Fields([customerName, phoneNumber]);
 

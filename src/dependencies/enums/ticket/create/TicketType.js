@@ -1,10 +1,10 @@
 export const TicketType = Object.freeze({
-  REWORK: 1,
-  EXPENSE: 2,
-  ASSEMBLY: 3
+  A: 1,
+  B: 2,
+  C: 3
 });
 export default [
-  { id: 1, value: '返工工单', name: 'REWORK' },
-  { id: 2, value: '消耗品工单', name: 'EXPENSE' },
-  { id: 3, value: '装配件工单', name: 'ASSEMBLY' }
+  { id: 1, value: 'A工单', name: 'A' },
+  { id: 2, value: 'B工单', name: 'B' },
+  { id: 3, value: 'C工单', name: 'C' }
 ];

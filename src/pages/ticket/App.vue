@@ -8,10 +8,9 @@
       <el-container direction="vertical">
         <Breadcrumb-component :base-title="baseTitle" />
         <Content-component>
-          <WaterMark-component>
-            <router-view></router-view>
-            <div id="qiankun-container"></div>
-          </WaterMark-component>
+          <router-view></router-view>
+          <div id="qiankun-container"></div>
+          <footer-component />
         </Content-component>
       </el-container>
     </el-container>
@@ -23,7 +22,7 @@ import HeaderComponent from 'src/modules/component/layout/header/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
 import ContentComponent from 'src/modules/component/layout/Content';
-import WaterMarkComponent from 'src/modules/component/layout/WaterMark';
+import FooterComponent from 'src/modules/component/layout/Footer';
 import { ticketRouters } from './router';
 export default {
   components: {
@@ -31,7 +30,7 @@ export default {
     SidebarComponent,
     BreadcrumbComponent,
     ContentComponent,
-    WaterMarkComponent
+    FooterComponent
   },
   data() {
     return {

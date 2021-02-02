@@ -6,6 +6,7 @@
       </div>
       <Form-list-component
         :configs="customerConfigs"
+        label-width="80px"
         label-position="left"
         :data="ticket"
       />
@@ -16,6 +17,7 @@
       </div>
       <Form-list-component
         :configs="ticketConfigs"
+        label-width="80px"
         label-position="left"
         :data="ticket"
       />

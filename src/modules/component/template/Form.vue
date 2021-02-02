@@ -31,6 +31,8 @@
           displayProp,
           formItemWidth,
           formItemInline,
+          singleton,
+          delimiter,
           ...arg
         } in configs"
       >
@@ -177,6 +179,17 @@
               :placeholder="placeholder || `请输入${label}`"
               :disabled="disabled"
             />
+            <user-component
+              v-else-if="type === 'user'"
+              :singleton="singleton"
+              :disabled="disabled"
+              :delimiter="delimiter"
+              :placeholder="
+                placeholder || singleton
+                  ? '请输入用户名'
+                  : `请输入用户名,多个之间用${delimiter}分隔`
+              "
+            />
             <el-input
               v-else
               v-model="params[prop]"
@@ -200,6 +213,7 @@
 
 <script>
 import LoadingMixin from 'src/modules/mixins/loading';
+import UserComponent from 'src/modules/component/UserChooser';
 import moment from 'moment';
 import { isFunction } from 'lodash';
 import {
@@ -212,6 +226,9 @@ const DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 
 export default {
   name: 'TemplateForm',
+  components: {
+    UserComponent
+  },
   mixins: [LoadingMixin],
   inheritAttrs: false,
   props: {

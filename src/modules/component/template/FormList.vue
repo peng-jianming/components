@@ -45,7 +45,7 @@
             />
             <!--专用显示字段-->
             <span v-else-if="displayProp">{{
-              data[displayProp] | mapArray | mapDefault
+              data[displayProp] | mapArray(sep) | mapDefault
             }}</span>
             <!--使用枚举格式化数组字段信息-->
             <span v-else-if="enums && Array.isArray(data[prop])">{{
@@ -57,7 +57,7 @@
             }}</span>
             <div v-else-if="isHtml" v-html="data[prop]"></div>
             <!--默认显示-->
-            <span v-else>{{ data[prop] | mapArray | mapDefault }}</span>
+            <span v-else>{{ data[prop] | mapArray(sep) | mapDefault }}</span>
           </slot>
         </el-form-item>
         <slot></slot>
@@ -83,8 +83,8 @@ export default {
     mapDefault(val) {
       return isFullEmpty(val) ? '--' : val;
     },
-    mapArray(val) {
-      return Array.isArray(val) ? val.join(';') : val;
+    mapArray(val, sep = ';') {
+      return Array.isArray(val) ? val.join(sep) : val;
     }
   },
   mixins: [GetEnumsValueMixin],

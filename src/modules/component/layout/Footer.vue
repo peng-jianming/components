@@ -1,13 +1,14 @@
 <template>
   <div class="page-footer">
-    <p>pengjianming个人组件代码库</p>
+    <p>粤ICP备123456789号</p>
   </div>
 </template>
 <style lang="less">
 .page-footer {
-  min-height: 50px;
+  padding: 10px 0 0 0;
+  color: #999;
   text-align: center;
-  font-family: '微软雅黑';
-  background-color: #409eff;
+  font-size: 12px;
+  letter-spacing: 0.4px;
 }
 </style>

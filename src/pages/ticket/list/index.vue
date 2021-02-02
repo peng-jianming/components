@@ -1,34 +1,78 @@
 <template>
-  <Table-component :datas="list" :configs="configs" />
+  <div class="ticket-list-page">
+    <div>
+      <Query-component
+        :configs="queryConfig"
+        @query="getTicketList(page, limit, $event)"
+      />
+      <Table-component :datas="list" :configs="configs" />
+    </div>
+    <el-pagination
+      :current-page.sync="page"
+      :page-size="limit"
+      background
+      hide-on-single-page
+      layout="total, prev, pager, next"
+      :total="total"
+      @current-change="getTicketList"
+    />
+  </div>
 </template>
 <script>
 import TableComponent from 'src/modules/component/template/Table';
-import { listFields } from './config/config';
+import QueryComponent from 'src/modules/component/Query';
+import { listFields, queryFields } from './config/config';
+import { getTicketList } from 'src/dependencies/api/ticket/list';
 export default {
   components: {
-    TableComponent
+    TableComponent,
+    QueryComponent
   },
   data() {
     return {
-      list: [
-        {
-          ticket_id: '1000001',
-          ticket_type: 1,
-          customer_name: 'pjm',
-          phone_number: '12345678909',
-          feedback_channel: 1,
-          problem_heppen_time: ['2021-01-28 23:59:59', '2020-12-03 00:00:00'],
-          problem_heppen_start_time: '2021-01-28 23:59:59',
-          problem_heppen_end_time: '2020-12-03 00:00:00',
-          description: '问题描述'
-        }
-      ]
+      list: [],
+      page: 1,
+      limit: 10,
+      total: 0
     };
   },
   computed: {
     configs() {
       return listFields.getFields();
+    },
+    queryConfig() {
+      return queryFields.getFields();
+    }
+  },
+  mounted() {
+    this.getTicketList();
+  },
+  methods: {
+    async getTicketList(page = this.page, limit = this.limit, query = {}) {
+      console.log(page, limit, query);
+      const { data } = await getTicketList({
+        query: {
+          ...query,
+          limit,
+          page
+        }
+      });
+      if (data && data.code === 0) {
+        this.list = data.data.data;
+        this.total = data.data.total;
+      }
     }
   }
 };
 </script>
+<style lang="less" scoped>
+.ticket-list-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.el-pagination {
+  text-align: center;
+}
+</style>

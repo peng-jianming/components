@@ -74,6 +74,7 @@ export class Field {
     this.validateMethod = validateMethod;
     // 默认情况为永久展示
     this.showCondition = () => true;
+    this.formItemInline = false;
   }
 
   clone() {
@@ -201,6 +202,16 @@ export class Field {
   resetFormItemWidth() {
     this.formItemWidth = undefined;
     delete this.formItemWidth;
+    return this;
+  }
+
+  setFormItemInline() {
+    this.formItemInline = true;
+    return this;
+  }
+
+  resetFormItemInline() {
+    this.formItemInline = false;
     return this;
   }
 

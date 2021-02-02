@@ -1,5 +1,4 @@
 import { Fields } from 'src/dependencies/fields/Fields';
-// import { Field } from 'src/dependencies/fields/Field';
 import {
   ticketType,
   customerName,
@@ -8,36 +7,68 @@ import {
   problemHeppenTime,
   description
 } from 'src/dependencies/fields/ticket/create/create';
-import { ticketId } from 'src/dependencies/fields/ticket/detail/detail';
-import RichTextEidtor from 'src/modules/component/rich-text-editor';
-// import EditComponent from '../components/Edit';
+import {
+  ticketId,
+  ticketStatus,
+  responsible,
+  currentHandler,
+  post,
+  createTime
+} from 'src/dependencies/fields/ticket/list/list';
 import TicketIdLinkComponent from '../components/TicketIdLink';
-const DATE_FORMAT = 'yyyy-MM-dd HH:mm:ss';
-
-// const handle = new Field({
-//   prop: 'handle',
-//   label: '操作'
-// });
 
 export const listFields = new Fields([
   ticketId.clone().setListComponent(TicketIdLinkComponent),
   ticketType,
+  ticketStatus,
+  description.clone().setIsHtml(),
+  responsible,
+  currentHandler,
+  post,
+  createTime,
   customerName,
   phoneNumber,
   feedbackChannel,
-  problemHeppenTime,
-  description
-  // handle
-  //   .clone()
-  //   .setIsFull()
-  //   .setListComponent(EditComponent)
+  problemHeppenTime.clone().setCustomize('sep', '-')
 ]);
 
-export const editFields = new Fields([
-  ticketType,
-  customerName,
-  phoneNumber,
-  feedbackChannel,
-  problemHeppenTime.clone().setCustomize('valueFormat', DATE_FORMAT),
-  description.clone().setEditComponent(RichTextEidtor)
+export const queryFields = new Fields([
+  ticketId
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  ticketType
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  ticketStatus
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  responsible
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  currentHandler
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  post
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline()
+    .setType('select'),
+  customerName
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  feedbackChannel
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline()
+    .setType('select'),
+  problemHeppenTime
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline()
 ]);

@@ -43,3 +43,8 @@ export const description = new Field({
   label: '问题描述',
   required: true
 });
+
+export const copyToPeople = new Field({
+  prop: 'copy_to_people',
+  label: '抄送人'
+});

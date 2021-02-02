@@ -48,7 +48,7 @@
           <span v-else-if="isHtml" v-html="showDetail(row[prop])"></span>
           <!--专用显示字段-->
           <span v-else-if="displayProp">{{
-            row[displayProp] | mapArray | mapDefault
+            row[displayProp] | mapArray(sep) | mapDefault
           }}</span>
           <!--使用枚举格式化数组字段信息-->
           <span v-else-if="enums && Array.isArray(row[prop])">{{
@@ -59,7 +59,7 @@
             getEnumsValue(enums, row[prop]) | mapDefault
           }}</span>
           <!--默认显示-->
-          <span v-else>{{ row[prop] | mapArray | mapDefault }}</span>
+          <span v-else>{{ row[prop] | mapArray(sep) | mapDefault }}</span>
         </el-form-item>
       </el-form>
     </el-table-column>
@@ -101,10 +101,10 @@
           :data="isFull ? row : row[prop]"
           @reload="handleReload"
         />
-        <span v-else-if="isHtml" v-html="row[prop]"></span>
+        <span v-else-if="isHtml" v-html="showDetail(row[prop])"></span>
         <!--专用显示字段-->
         <span v-else-if="displayProp">{{
-          row[displayProp] | mapArray | mapDefault
+          row[displayProp] | mapArray(sep) | mapDefault
         }}</span>
         <!--使用枚举格式化数组字段信息-->
         <span v-else-if="enums && Array.isArray(row[prop])">{{
@@ -115,7 +115,7 @@
           getEnumsValue(enums, row[prop]) | mapDefault
         }}</span>
         <!--默认显示-->
-        <span v-else>{{ row[prop] | mapArray | mapDefault }}</span>
+        <span v-else>{{ row[prop] | mapArray(sep) | mapDefault }}</span>
       </template>
     </el-table-column>
     <!--可以增加额外的列-->
@@ -130,8 +130,7 @@
 </template>
 
 <script>
-import nl2br from 'nl2br';
-import { escape, isNil } from 'lodash';
+import { isNil } from 'lodash';
 import { isFullEmpty } from 'src/modules/utils/params';
 import GetEnumsValueMixin from 'src/modules/mixins/get-enums-value';
 
@@ -141,8 +140,8 @@ export default {
     mapDefault(val) {
       return isFullEmpty(val) ? '--' : val;
     },
-    mapArray(val) {
-      return Array.isArray(val) ? val.join(';') : val;
+    mapArray(val, sep = ';') {
+      return Array.isArray(val) ? val.join(sep) : val;
     }
   },
   mixins: [GetEnumsValueMixin],
@@ -201,8 +200,9 @@ export default {
     }
   },
   methods: {
+    // 替换所有标签为空字符串
     showDetail(result = '') {
-      return nl2br(escape(result));
+      return result.replace(/(<(.[^>]*)>)|(&nbsp;)/g, '');
     },
     handleSelectionChange(row) {
       this.$emit('selection-change', row);

@@ -10,37 +10,41 @@
   </div>
 </template>
 <script>
-import InformationComponent from './components/Information';
+import InformationComponent from 'src/pages/ticket/detail/components/Information';
+import { getTicket } from 'src/dependencies/api/ticket/detail';
+import { getURIParams } from 'src/modules/utils/uri';
 export default {
   components: {
     InformationComponent
   },
   data() {
     return {
-      ticket: {
-        ticket_id: '1000001',
-        ticket_type: 1,
-        ticket_status: 1,
-        customer_name: 'pjm',
-        phone_number: '12345678909',
-        feedback_channel: 1,
-        problem_heppen_time: ['2021-01-28 23:59:59', '2020-12-03 00:00:00'],
-        problem_heppen_start_time: '2021-01-28 23:59:59',
-        problem_heppen_end_time: '2020-12-03 00:00:00',
-        description: '问题描述',
-        create_time: '2020-12-29 11:12:00'
-      }
+      ticket: {}
     };
+  },
+  mounted() {
+    this.getTicket();
+  },
+  methods: {
+    async getTicket() {
+      const { data } = await getTicket({
+        params: getURIParams()
+      });
+      if (data && data.code === 0) {
+        this.ticket = data.data;
+      }
+    }
   }
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .page-detail {
+  flex: 1;
   display: flex;
   justify-content: space-between;
   &-tool {
     box-sizing: border-box;
-    width: 300px;
+    width: 350px;
     padding-left: 20px;
     border-left: 1px solid #ccc;
   }

@@ -1,12 +1,15 @@
 import { registerMicroApps, start } from 'qiankun';
 import { Loading } from 'element-ui';
+import storage from 'src/modules/utils/storage.js';
+
+const { get: getToken } = storage('token');
 
 let loadingInstance = null;
 const apps = [
   {
     name: 'createTicket',
     entry: '//8.129.90.25:5555',
-    // entry: '//localhost:3000',
+    // entry: '//localhost:4000',
     container: '#qiankun-container',
     activeRule: location => location.pathname.startsWith('/ticket/create'),
     loader: loading => {
@@ -22,7 +25,8 @@ const apps = [
         loadingInstance.close();
         loadingInstance = null;
       }
-    }
+    },
+    props: { token: getToken() }
   }
 ];
 
