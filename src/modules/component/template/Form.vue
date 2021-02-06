@@ -181,6 +181,7 @@
             />
             <user-component
               v-else-if="type === 'user'"
+              v-model="params[prop]"
               :singleton="singleton"
               :disabled="disabled"
               :delimiter="delimiter"

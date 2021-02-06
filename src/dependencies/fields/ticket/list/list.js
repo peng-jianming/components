@@ -23,14 +23,16 @@ export const post = new Field({
   prop: 'post',
   label: '岗位',
   type: 'radio',
-  enums: PostEnums
+  enums: PostEnums,
+  required: true
 });
 
 export const ticketStatus = new Field({
   prop: 'ticket_status',
   label: '工单状态',
   type: 'select',
-  enums: TicketStatusEnums
+  enums: TicketStatusEnums,
+  required: true
 });
 
 export const createTime = new Field({

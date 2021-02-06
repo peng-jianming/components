@@ -6,7 +6,7 @@
       </div>
       <Form-list-component
         :configs="customerConfigs"
-        label-width="80px"
+        label-width="85px"
         label-position="left"
         :data="ticket"
       />
@@ -17,7 +17,7 @@
       </div>
       <Form-list-component
         :configs="ticketConfigs"
-        label-width="80px"
+        label-width="85px"
         label-position="left"
         :data="ticket"
       />
@@ -26,10 +26,7 @@
 </template>
 <script>
 import FormListComponent from 'src/modules/component/template/FormList';
-import {
-  customerConfigFields,
-  ticketConfigFields
-} from 'src/pages/ticket/detail/config/informationConfig';
+import { customerConfigFields, ticketConfigFields } from './config';
 export default {
   components: {
     FormListComponent
