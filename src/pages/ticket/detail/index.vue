@@ -45,7 +45,7 @@ export default {
   },
   mounted() {
     this.socket = new Socket({
-      url: 'www.pengjianming.top/ws:8080',
+      url: 'www.pengjianming.top:8080',
       token: getToken(),
       roomId: this.$route.query.id,
       callback: data => {
