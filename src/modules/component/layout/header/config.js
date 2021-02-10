@@ -1,5 +1,4 @@
 import {
-  userName,
   email,
   avatar,
   oldPassword,
@@ -9,7 +8,6 @@ import {
 import AvatarComponent from './Avatar';
 
 export const userConfig = [
-  userName,
   email,
   avatar
     .clone()

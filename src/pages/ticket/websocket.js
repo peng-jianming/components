@@ -17,6 +17,7 @@ class Socket {
   }
 
   onOpen(token, roomId) {
+    console.log('websocket连接了');
     // 连接时,根据身份校验事件,传参给服务端设置对应的连接信息
     this.send({
       event: 'auth',
@@ -47,8 +48,8 @@ class Socket {
         clearTimeout(this.pingTimeout);
         this.pingTimeout = setTimeout(() => {
           this.close();
-          this.init();
-        }, 1000 + 1000);
+          this.onError();
+        }, 30000 + 5000);
         break;
       default:
         callback(data);
@@ -57,6 +58,10 @@ class Socket {
 
   onError() {
     console.log('websocket连接错误');
+    // 连接出错了,1S后重新连接
+    setTimeout(() => {
+      this.init();
+    }, 1000);
   }
 
   onClose() {
@@ -67,6 +72,7 @@ class Socket {
     // 关闭websocket连接需要关闭心跳检测定时器,防止断开后原来的定时器还在运行连接
     clearTimeout(this.pingTimeout);
     this.ws.close();
+    console.log('websocket连接关闭了');
   }
 }
 

@@ -45,6 +45,11 @@ export default {
       cacheNameList: []
     };
   },
+  watch: {
+    value(val) {
+      this.queryString = val;
+    }
+  },
   methods: {
     handleDelete(e) {
       // 删除时删除整个名字

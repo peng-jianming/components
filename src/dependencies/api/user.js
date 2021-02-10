@@ -43,3 +43,27 @@ export const patchChangePassword = ({
     ...config
   });
 };
+
+export const getUserMessage = ({
+  query = {},
+  config = { loading: false }
+} = {}) => {
+  return axios.request({
+    params: query,
+    url: '/api/user/message',
+    method: 'get',
+    ...config
+  });
+};
+
+export const patchUserMessage = ({
+  data = {},
+  config = { loading: false }
+} = {}) => {
+  return axios.request({
+    data,
+    url: '/api/user/message',
+    method: 'patch',
+    ...config
+  });
+};

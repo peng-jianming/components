@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-export const getTest = ({ config = { loading: false } } = {}) => {
+export const getTicketAboutMe = ({
+  query = {},
+  config = { loading: false }
+} = {}) => {
   return axios.request({
-    url: '/test',
+    params: query,
+    url: '/api/ticket/me',
     method: 'get',
     ...config
   });

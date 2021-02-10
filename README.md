@@ -14,3 +14,5 @@
 - ## [微前端single-spa与qiankun的使用](https://juejin.cn/post/6917245057896710158)
 
 - ## [静态资源自动重试方案](https://juejin.cn/post/6918648841105309709)
+
+- ## [websocket的使用](https://juejin.cn/post/6926744616419426311)

@@ -12,7 +12,7 @@
         </template>
       </el-breadcrumb>
     </el-card>
-    <div class="page-history">
+    <!-- <div class="page-history">
       <router-link
         v-for="({ meta, fullPath }, index) in cacheRoute"
         :key="index"
@@ -27,7 +27,7 @@
           {{ meta.sidebarName }}
         </el-tag>
       </router-link>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
