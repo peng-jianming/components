@@ -32,6 +32,17 @@ export const adminRouters = [
         meta: {
           sidebarName: '客服权限(single-spa应用)'
         }
+      },
+      {
+        path: 'settingManage',
+        name: 'settingManage',
+        component: () =>
+          import(
+            /* webpackChunkName: "admin/permission/settingManage" */ 'src/pages/admin/permission/settingManage'
+          ),
+        meta: {
+          sidebarName: '权限设置'
+        }
       }
     ]
   },

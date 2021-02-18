@@ -33,7 +33,10 @@ const apps = [
       return window.managePermission;
     },
     // location匹配
-    activeWhen: location => location.hash.startsWith('#/permission/manage'),
+    activeWhen: location => {
+      console.log(location.hash.startsWith('#/permission/manage'));
+      return location.hash.startsWith('#/permission/manage');
+    },
     // 传参到子应用
     customProps: (name, location) => {
       return {

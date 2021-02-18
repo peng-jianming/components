@@ -8,6 +8,14 @@ export const getUser = ({ config = { loading: false } } = {}) => {
   });
 };
 
+export const getAllUser = ({ config = { loading: false } } = {}) => {
+  return axios.request({
+    url: '/api/user/all',
+    method: 'get',
+    ...config
+  });
+};
+
 export const postUserAvatar = ({
   data = {},
   config = { loading: false }

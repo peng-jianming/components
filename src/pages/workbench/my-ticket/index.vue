@@ -8,7 +8,7 @@
       hide-on-single-page
       layout="total, prev, pager, next"
       :total="total"
-      @current-change="getTicketList"
+      @current-change="getTicketAboutMe"
     />
   </div>
 </template>

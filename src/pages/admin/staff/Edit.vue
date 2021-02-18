@@ -8,7 +8,7 @@
     <Form-component
       ref="form"
       label-width="120px"
-      :configs="configs"
+      :configs="editConfigs"
       :params="params"
       :data="data"
     />
@@ -17,7 +17,7 @@
 <script>
 import EditDialogComponent from 'src/modules/component/EditDialog';
 import FormComponent from 'src/modules/component/template/Form';
-import { editFields } from '../config/config';
+import { editConfigs } from './config';
 import EditDataMinxin from 'src/modules/mixins/edit-data';
 export default {
   components: {
@@ -25,10 +25,10 @@ export default {
     FormComponent
   },
   mixins: [EditDataMinxin],
-  computed: {
-    configs() {
-      return editFields.getFields();
-    }
+  data() {
+    return {
+      editConfigs
+    };
   },
   methods: {
     submit() {
