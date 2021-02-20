@@ -1,14 +1,10 @@
 <template>
-  <div
-    class="user"
-    @mouseenter="showUserFeatureList = true"
-    @mouseleave="showUserFeatureList = false"
-  >
+  <div class="user">
     <div class="user-item">
       <el-avatar size="small" :src="userInfo.avatar"></el-avatar>
       <span class="user-item-name">{{ userInfo.user_name }}</span>
     </div>
-    <div v-show="showUserFeatureList" class="user-feature-list">
+    <div class="user-feature-list">
       <edit-form-dialog-component
         btn-type="text"
         btn-text="个人设置"
@@ -88,7 +84,6 @@ export default {
   },
   data() {
     return {
-      showUserFeatureList: false,
       userConfig,
       passwordConfig,
       activeNames: '',
@@ -195,7 +190,11 @@ export default {
   top: 11px;
   right: 30px;
   font-size: 14px;
+  &:hover .user-feature-list {
+    display: block;
+  }
   &-item {
+    height: 30px;
     min-width: 100px;
     display: flex;
     justify-content: center;
@@ -206,6 +205,7 @@ export default {
     }
   }
   .user-feature-list {
+    display: none;
     background-color: #fff;
     padding: 8px 16px;
     border-radius: 12px;

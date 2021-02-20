@@ -1,4 +1,7 @@
 import { registerApplication, start } from 'single-spa';
+import storage from 'src/modules/utils/storage.js';
+
+const { get: getToken } = storage('token');
 
 const insetScript = src => {
   return new Promise((resolve, reject) => {
@@ -40,7 +43,7 @@ const apps = [
     // 传参到子应用
     customProps: (name, location) => {
       return {
-        data: 'data'
+        token: getToken()
       };
     }
   }
