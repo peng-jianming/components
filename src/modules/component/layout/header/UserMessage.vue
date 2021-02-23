@@ -73,10 +73,10 @@ import {
   getUserMessage,
   patchUserMessage
 } from 'src/dependencies/api/user';
-// import Socket from 'src/pages/ticket/websocket';
-// import TipComponent from './Tip';
+import Socket from 'src/pages/ticket/websocket';
+import TipComponent from './Tip';
 
-const { remove: removeToken } = storage('token');
+const { remove: removeToken, get: getToken } = storage('token');
 export default {
   components: {
     EditFormDialogComponent,
@@ -99,25 +99,25 @@ export default {
     }
   },
   mounted() {
-    // this.socket = new Socket({
-    //   url: 'www.pengjianming.top:8080',
-    //   token: getToken(),
-    //   callback: data => {
-    //     if (data.event === 'tip') {
-    //       this.openMessageDialog();
-    //       this.$notify({
-    //         title: '提示',
-    //         dangerouslyUseHTMLString: true,
-    //         message: this.$createElement(TipComponent, {
-    //           props: { title: data.data.title, id: data.data.id },
-    //           on: {
-    //             open: this.open
-    //           }
-    //         })
-    //       });
-    //     }
-    //   }
-    // });
+    this.socket = new Socket({
+      url: 'www.pengjianming.top:8080',
+      token: getToken(),
+      callback: data => {
+        if (data.event === 'tip') {
+          this.openMessageDialog();
+          this.$notify({
+            title: '提示',
+            dangerouslyUseHTMLString: true,
+            message: this.$createElement(TipComponent, {
+              props: { title: data.data.title, id: data.data.id },
+              on: {
+                open: this.open
+              }
+            })
+          });
+        }
+      }
+    });
   },
   methods: {
     async open(id) {
