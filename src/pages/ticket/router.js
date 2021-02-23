@@ -24,6 +24,7 @@ export const ticketRouters = [
     meta: {
       sidebarName: '工单查询',
       sidebarIcon: 'el-icon-tickets'
+      // sidebarPermissionCode: 'LIST_TICKET_VIEW'
     }
   },
   {
@@ -32,6 +33,7 @@ export const ticketRouters = [
     meta: {
       sidebarName: '创建工单(qiankun应用)',
       sidebarIcon: 'el-icon-edit-outline'
+      // sidebarPermissionCode: 'CREATE_TICKET_VIEW'
     }
   },
   {
@@ -49,7 +51,7 @@ export const ticketRouters = [
 const router = new VueRouter({
   mode: 'history',
   base: '/ticket',
-  routes: ticketRouters
+  routes: []
 });
 
 export default router;

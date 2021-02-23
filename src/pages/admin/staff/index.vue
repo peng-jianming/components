@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="staff">
     <QueryComponent :configs="queryConfigs" />
     <TableComponent :configs="listConfigs" :datas="users" />
   </div>
@@ -28,9 +28,14 @@ export default {
     async getAllUser() {
       const { data } = await getAllUser();
       if (data && data.code === 0) {
-        this.users = data.data;
+        this.users = data.data.data;
       }
     }
   }
 };
 </script>
+<style scoped>
+.staff {
+  flex: 1;
+}
+</style>

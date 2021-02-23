@@ -32,7 +32,7 @@ export const workbenchRouters = [
 ];
 
 const router = new VueRouter({
-  routes: workbenchRouters
+  routes: []
 });
 
 export default router;

@@ -23,6 +23,7 @@ const actions = {
     const { data } = await getUser();
     if (data && data.code === 0) {
       commit('changeUser', data.data);
+      return Promise.resolve(data.data);
     }
   },
   async setUser({ commit }, { params, callback }) {

@@ -1,16 +1,17 @@
 <template>
   <el-container class="page-container">
     <el-header height="50px">
-      <Header-component />
+      <header-component />
     </el-header>
     <el-container class="page-content">
-      <Sidebar-component :sidebar-menu="adminRouters" />
+      <sidebar-component :sidebar-menu="sidebarRoutes" />
       <el-container direction="vertical">
-        <Breadcrumb-component :base-title="baseTitle" />
-        <Content-component>
+        <breadcrumb-component :base-title="baseTitle" />
+        <content-component>
           <div id="spa-container"></div>
           <router-view></router-view>
-        </Content-component>
+        </content-component>
+        <footer-component />
       </el-container>
     </el-container>
   </el-container>
@@ -21,22 +22,28 @@ import HeaderComponent from 'src/modules/component/layout/header/Header';
 import SidebarComponent from 'src/modules/component/layout/Sidebar';
 import BreadcrumbComponent from 'src/modules/component/layout/Breadcrumb';
 import ContentComponent from 'src/modules/component/layout/Content';
-import { adminRouters } from './router';
+import FooterComponent from 'src/modules/component/layout/Footer';
+import router, { adminRouters } from './router';
+import PermissionMixin from 'src/modules/mixins/permission';
 export default {
   components: {
     HeaderComponent,
     SidebarComponent,
     BreadcrumbComponent,
-    ContentComponent
+    ContentComponent,
+    FooterComponent
   },
+  mixins: [PermissionMixin],
   data() {
     return {
-      baseTitle: '系统设置',
-      adminRouters
+      baseTitle: '系统设置'
     };
   },
   created() {
-    this.$store.dispatch('getUser');
+    this.$store.dispatch('getUser').then(({ permission }) => {
+      this.sidebarRoutes = this.handlRouter(adminRouters, permission);
+      router.addRoutes(this.sidebarRoutes);
+    });
   }
 };
 </script>

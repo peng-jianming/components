@@ -30,7 +30,8 @@ export const adminRouters = [
         path: 'manage',
         name: 'manage',
         meta: {
-          sidebarName: '客服权限(single-spa应用)'
+          sidebarName: '客服权限(single-spa应用)',
+          sidebarPermissionCode: 'ADMIN_PERMISSION_MANAGE_VIEW'
         }
       },
       {
@@ -41,7 +42,8 @@ export const adminRouters = [
             /* webpackChunkName: "admin/permission/settingManage" */ 'src/pages/admin/permission/settingManage'
           ),
         meta: {
-          sidebarName: '权限设置'
+          sidebarName: '权限设置',
+          sidebarPermissionCode: 'ADMIN_PERMISSION_SETTING_VIEW'
         }
       }
     ]
@@ -53,7 +55,8 @@ export const adminRouters = [
       import(/* webpackChunkName: "admin/staff" */ 'src/pages/admin/staff'),
     meta: {
       sidebarName: '客服管理',
-      sidebarIcon: 'el-icon-service'
+      sidebarIcon: 'el-icon-service',
+      sidebarPermissionCode: 'ADMIN_STAFF_VIEW'
     }
   },
   {
@@ -69,7 +72,7 @@ export const adminRouters = [
 ];
 
 const router = new VueRouter({
-  routes: adminRouters
+  routes: []
 });
 
 export default router;

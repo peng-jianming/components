@@ -6,6 +6,7 @@
 
 <script>
 import FormListComponent from 'src/modules/component/template/FormList';
+import { title } from 'src/dependencies/fields/admin/permission/settingManage';
 import config from '../configs';
 export default {
   components: {
@@ -19,11 +20,10 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      config
-    };
+  computed: {
+    config() {
+      return this.currentData.permission_code ? config : [title];
+    }
   }
 };
 </script>
-<style lang="less" scoped></style>

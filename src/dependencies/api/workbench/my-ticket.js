@@ -6,7 +6,7 @@ export const getTicketAboutMe = ({
 } = {}) => {
   return axios.request({
     params: query,
-    url: '/api/ticket/me',
+    url: '/api/workbench/me',
     method: 'get',
     ...config
   });

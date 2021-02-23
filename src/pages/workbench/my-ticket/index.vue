@@ -1,6 +1,8 @@
 <template>
   <div class="ticket-list-page">
-    <Table-component :datas="list" :configs="configs" />
+    <div>
+      <Table-component :datas="list" :configs="configs" />
+    </div>
     <el-pagination
       :current-page.sync="page"
       :page-size="limit"
@@ -38,7 +40,6 @@ export default {
   },
   methods: {
     async getTicketAboutMe(page = this.page, limit = this.limit, query = {}) {
-      console.log(page, limit, query);
       const { data } = await getTicketAboutMe({
         query: {
           limit,
@@ -59,8 +60,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.el-pagination {
-  text-align: center;
+  .el-pagination {
+    text-align: center;
+  }
 }
 </style>

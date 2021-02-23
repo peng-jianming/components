@@ -49,7 +49,6 @@ export default {
   },
   methods: {
     async getTicketList(page = this.page, limit = this.limit, query = {}) {
-      console.log(page, limit, query);
       const { data } = await getTicketList({
         query: {
           ...query,
@@ -71,8 +70,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.el-pagination {
-  text-align: center;
+  .el-pagination {
+    text-align: center;
+  }
 }
 </style>
