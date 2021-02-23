@@ -37,7 +37,7 @@ class Socket {
     switch (data.event) {
       case 'noAuth':
         // 验证失败,返回登录页
-        location.href = '/login';
+        // location.href = '/login';
         break;
       case 'heartbeat':
         // 心跳检测,当连接成功,服务端就会定时发起ping请求,需要回复,让服务端知道客户端在线,
