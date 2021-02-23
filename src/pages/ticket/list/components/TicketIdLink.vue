@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     link() {
-      return `/ticket/#/detail?id=1612604823482`;
+      return `/ticket/detail?id=1612604823482`;
     }
   }
 };
