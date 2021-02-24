@@ -31,3 +31,18 @@ export const listFields = new Fields([
   feedbackChannel,
   problemHeppenTime.clone().setCustomize('sep', '-')
 ]);
+
+export const queryConfig = [
+  ticketId
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  ticketType
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline(),
+  ticketStatus
+    .clone()
+    .setFormItemWidth('30%')
+    .setFormItemInline()
+];

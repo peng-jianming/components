@@ -1,6 +1,10 @@
 <template>
   <div class="ticket-list-page">
     <div>
+      <Query-component
+        :configs="queryConfig"
+        @query="getTicketAboutMe(page, limit, $event)"
+      />
       <Table-component :datas="list" :configs="configs" />
     </div>
     <el-pagination
@@ -16,14 +20,17 @@
 </template>
 <script>
 import TableComponent from 'src/modules/component/template/Table';
-import { listFields } from './config';
+import QueryComponent from 'src/modules/component/Query';
+import { listFields, queryConfig } from './config';
 import { getTicketAboutMe } from 'src/dependencies/api/workbench/my-ticket';
 export default {
   components: {
-    TableComponent
+    TableComponent,
+    QueryComponent
   },
   data() {
     return {
+      queryConfig,
       list: [],
       page: 1,
       limit: 10,
@@ -42,6 +49,7 @@ export default {
     async getTicketAboutMe(page = this.page, limit = this.limit, query = {}) {
       const { data } = await getTicketAboutMe({
         query: {
+          ...query,
           limit,
           page
         }

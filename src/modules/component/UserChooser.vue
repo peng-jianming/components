@@ -18,7 +18,7 @@
 
 <script>
 import { uniq } from 'lodash';
-import { getSearchUser } from 'src/dependencies/api';
+import { getSearchUser } from 'src/dependencies/api/ticket/list';
 import londingMixins from 'src/modules/mixins/loading';
 export default {
   mixins: [londingMixins],

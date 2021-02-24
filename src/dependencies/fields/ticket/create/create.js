@@ -19,6 +19,13 @@ export const customerName = new Field({
 export const phoneNumber = new Field({
   prop: 'phone_number',
   label: '联系电话',
+  validateMethod: (params, newData, oldData) => {
+    return (
+      /^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-79])|(?:5[0-35-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[189]))\d{8}$/.test(
+        params
+      ) || '手机号码格式不正确'
+    );
+  },
   required: true
 });
 
