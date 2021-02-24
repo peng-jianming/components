@@ -60,5 +60,13 @@ export default {
       }
     }
     return config;
+  },
+  responseReject(error) {
+    if (axios.isCancel(error)) {
+      console.log('Request canceled:', error.message);
+      return error;
+    } else {
+      return Promise.reject(error);
+    }
   }
 };
