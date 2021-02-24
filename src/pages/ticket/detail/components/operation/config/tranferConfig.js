@@ -15,5 +15,6 @@ export default new Fields([
   copyToPeople
     .clone()
     .setEditComponent(UserChooserComponent)
+    .setCustomize('singleton', false)
     .setFormItemWidth('700px')
 ]);

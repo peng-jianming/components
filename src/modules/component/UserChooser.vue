@@ -11,13 +11,14 @@
     @focus="focus"
     @blur="blur"
     @select="handleSelect"
+    @input="handleChange"
     @keyup.delete.native="handleDelete"
   />
 </template>
 
 <script>
 import { uniq } from 'lodash';
-import { getSearchUser } from 'src/dependencies/api/ticket/list';
+import { getSearchUser } from 'src/dependencies/api';
 import londingMixins from 'src/modules/mixins/loading';
 export default {
   mixins: [londingMixins],
@@ -137,4 +138,3 @@ export default {
   }
 };
 </script>
-<style lang="less" scoped></style>
