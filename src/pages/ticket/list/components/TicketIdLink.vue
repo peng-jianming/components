@@ -1,5 +1,5 @@
 <template>
-  <a :href="link">{{ value }}</a>
+  <router-link :to="link">{{ value }}</router-link>
 </template>
 <script>
 export default {
@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     link() {
-      return `/ticket/detail?id=${this.value}`;
+      return `/detail?id=${this.value}`;
     }
   }
 };

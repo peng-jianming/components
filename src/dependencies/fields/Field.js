@@ -52,7 +52,6 @@ export class Field {
     enums,
     width,
     inputClass,
-    isCopy,
     placeholder,
     formItemWidth,
     validateMethod
@@ -68,7 +67,6 @@ export class Field {
     this.defaultValue = defaultValue;
     this.width = width;
     this.inputClass = inputClass;
-    this.isCopy = isCopy;
     this.placeholder = placeholder;
     this.formItemWidth = formItemWidth;
     this.validateMethod = validateMethod;

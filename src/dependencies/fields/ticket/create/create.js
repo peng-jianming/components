@@ -53,5 +53,6 @@ export const description = new Field({
 
 export const copyToPeople = new Field({
   prop: 'copy_to_people',
-  label: '抄送人'
+  label: '抄送人',
+  type: 'user'
 });

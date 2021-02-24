@@ -3,7 +3,6 @@ import { reply } from 'src/dependencies/fields/ticket/detail/detail';
 import { copyToPeople } from 'src/dependencies/fields/ticket/create/create';
 import { ticketStatus } from 'src/dependencies/fields/ticket/list/list';
 import RichTextEditorComponent from 'src/modules/component/rich-text-editor';
-import UserChooserComponent from 'src/modules/component/UserChooser';
 import TicketStatusEnums, {
   TicketStatus
 } from 'src/dependencies/enums/ticket/list/TicketStatus';
@@ -25,7 +24,6 @@ export default new Fields([
     .setFormItemWidth('700px'),
   copyToPeople
     .clone()
-    .setEditComponent(UserChooserComponent)
     .setCustomize('singleton', false)
     .setFormItemWidth('700px')
 ])
