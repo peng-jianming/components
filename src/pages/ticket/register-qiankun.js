@@ -15,6 +15,7 @@ const apps = [
     loader: loading => {
       console.log(`loading变化了,当前状态: ${loading}`);
       if (loading) {
+        // 全屏loading加载效果
         loadingInstance = Loading.service({
           fullscreen: true,
           text: 'Loading',

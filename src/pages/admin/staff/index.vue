@@ -14,6 +14,13 @@ export default {
     QueryComponent,
     TableComponent
   },
+  provide() {
+    return {
+      aaa: () => {
+        return this.users;
+      }
+    };
+  },
   data() {
     return {
       queryConfigs,

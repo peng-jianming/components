@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getUser = ({ config = { loading: false } } = {}) => {
   return axios.request({
-    url: '/api/user',
+    url: 'http://127.0.0.1:3000/api/user',
     method: 'get',
     ...config
   });

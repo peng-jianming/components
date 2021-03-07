@@ -25,10 +25,22 @@ export default {
     FormComponent
   },
   mixins: [EditDataMinxin],
+  inject: {
+    aaa: {
+      default() {
+        return [];
+      }
+    }
+  },
   data() {
     return {
       editConfigs
     };
+  },
+  computed: {
+    aaaaaaa() {
+      return '123';
+    }
   },
   methods: {
     submit() {

@@ -11,7 +11,6 @@ const chalk = require('chalk');
 const { merge } = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
 const CopyPlugin = require('copy-webpack-plugin');
-
 const isProduction = process.env.NODE_ENV === 'production';
 
 const entryConfigure = () => {
@@ -113,7 +112,11 @@ const baseConfig = {
   externals: {
     vue: 'Vue',
     vuex: 'Vuex',
-    'vue-router': 'VueRouter'
+    'vue-router': 'VueRouter',
+    'element-ui': 'ELEMENT',
+    _: 'lodash',
+    axios: 'axios',
+    moment: 'moment'
   },
   stats: {
     colors: true,

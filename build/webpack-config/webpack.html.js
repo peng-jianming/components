@@ -53,9 +53,7 @@ module.exports = (entries, production = false) => {
         const myConfigFile = fs.existsSync(indexConfig)
           ? require(indexConfig)
           : globalPageConfig;
-        /**
-         * 使用Object.assign合并独立配置与全局配置，浅复制追加和替换配置
-         */
+        // 使用Object.assign合并独立配置与全局配置，浅复制追加和替换配置
         const myConfigs = deepMerge({}, globalPageConfig, myConfigFile);
 
         return handleHTMLPlugin(key, myPage, myConfigs, production);
