@@ -2,14 +2,14 @@
   <div class="page-detail">
     <div class="page-detail-content">
       <el-card class="page-detail-content-process">
-        <ProcessComponent :ticket="ticket" />
+        <process-component />
       </el-card>
       <div class="page-detail-content-operation">
-        <OperationComponent :ticket="ticket" @reload="getTicket" />
+        <operation-component :ticket="ticket" @reload="getTicket" />
       </div>
     </div>
     <el-card class="page-detail-tool">
-      <Information-component :ticket="ticket" />
+      <information-component :ticket="ticket" />
     </el-card>
   </div>
 </template>
@@ -19,10 +19,6 @@ import InformationComponent from 'src/pages/ticket/detail/components/infomation'
 import OperationComponent from 'src/pages/ticket/detail/components/operation';
 import ProcessComponent from 'src/pages/ticket/detail/components/process';
 import { getTicket } from 'src/dependencies/api/ticket/detail';
-import Socket from 'src/pages/ticket/websocket';
-import storage from 'src/modules/utils/storage';
-
-const { get: getToken } = storage('token');
 
 const FATMAT = 'YYYY-MM-DD hh:mm:ss';
 
@@ -37,26 +33,8 @@ export default {
       ticket: {}
     };
   },
-  watch: {
-    $route: {
-      handler: 'getTicket',
-      immediate: true
-    }
-  },
   mounted() {
-    this.socket = new Socket({
-      url: 'www.pengjianming.top:8080',
-      token: getToken(),
-      roomId: this.$route.query.id,
-      callback: data => {
-        if (data.event === 'chat') {
-          this.getTicket();
-        }
-      }
-    });
-  },
-  destroyed() {
-    this.socket.close();
+    this.getTicket();
   },
   methods: {
     async getTicket() {

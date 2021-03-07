@@ -1,7 +1,7 @@
 <template>
   <el-scrollbar ref="scrollbar" style="height: 100%; width: 100%">
     <div
-      v-for="({ user, text }, index) in ticket.chat_record"
+      v-for="({ user, text }, index) in chatRecordList"
       :key="index"
       class="chat-item clearfloat"
     >
@@ -35,18 +35,49 @@
 </template>
 
 <script>
+import Socket from 'src/pages/ticket/websocket';
+import storage from 'src/modules/utils/storage';
+import { getTicketChatRecord } from 'src/dependencies/api/ticket/detail';
+
+const { get: getToken } = storage('token');
 export default {
-  props: {
-    ticket: {
-      type: Object,
-      default() {
-        return {};
+  data() {
+    return {
+      chatRecordList: []
+    };
+  },
+  mounted() {
+    this.getTicketChatRecord();
+    this.socket = new Socket({
+      url: 'www.pengjianming.top:8080',
+      // url: '127.0.0.1:8080',
+      token: getToken(),
+      roomId: this.$route.query.id,
+      callback: data => {
+        if (data.event === 'chat') {
+          this.getTicketChatRecord();
+        }
       }
-    }
+    });
+  },
+  destroyed() {
+    this.socket.close();
   },
   updated() {
     // 保证有消息来重新渲染DOM时,滚动条可以重置到底部
     this.$refs.scrollbar.wrap.scrollTop = this.$refs.scrollbar.wrap.scrollHeight;
+  },
+  methods: {
+    async getTicketChatRecord() {
+      const { data } = await getTicketChatRecord({
+        params: {
+          id: this.$route.query.id
+        }
+      });
+      if (data && data.code === 0) {
+        this.chatRecordList = data.data;
+      }
+    }
   }
 };
 </script>

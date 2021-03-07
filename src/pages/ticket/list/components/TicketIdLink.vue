@@ -1,5 +1,8 @@
 <template>
-  <a :href="link">{{ value }}</a>
+  <div>
+    <a v-if="acrossPage" :href="link">{{ value }}</a>
+    <router-link v-else :to="link">{{ value }}</router-link>
+  </div>
 </template>
 <script>
 export default {
@@ -7,11 +10,17 @@ export default {
     value: {
       type: String,
       required: true
+    },
+    acrossPage: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     link() {
-      return `/ticket/detail?id=${this.value}`;
+      return this.acrossPage
+        ? `/ticket/detail?id=${this.value}`
+        : `/detail?id=${this.value}`;
     }
   }
 };

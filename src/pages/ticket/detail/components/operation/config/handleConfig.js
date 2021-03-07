@@ -11,6 +11,7 @@ export default new Fields([
   ticketStatus
     .clone()
     .setType('radio')
+    .resetRequired()
     .setShowCondition(
       context =>
         // 当前处理人和客户代表并且不是待处理状态,才显示状态
@@ -28,7 +29,7 @@ export default new Fields([
     .setFormItemWidth('700px')
 ])
   .registerChangeField({
-    // 处理中,客户代表是自己,显示处理中,已结单
+    // 处理中,客户代表是自己,显示已结单
     prop: ticketStatus.prop,
     condition: context => {
       return (
@@ -38,14 +39,12 @@ export default new Fields([
     },
     converter: field => {
       field.setEnums(
-        TicketStatusEnums.filter(({ id }) =>
-          [TicketStatus.IN_HAND, TicketStatus.CLOSED].includes(id)
-        )
+        TicketStatusEnums.filter(({ id }) => TicketStatus.CLOSED === id)
       );
     }
   })
   .registerChangeField({
-    // 处理中,客户代表不是自己,并且当前处理人是自己,显示处理中,申请结单
+    // 处理中,客户代表不是自己,并且当前处理人是自己(即是运维),显示申请结单
     prop: ticketStatus.prop,
     condition: context => {
       return (
@@ -56,8 +55,8 @@ export default new Fields([
     },
     converter: field => {
       field.setEnums(
-        TicketStatusEnums.filter(({ id }) =>
-          [TicketStatus.IN_HAND, TicketStatus.CLOSE_APPLICATION].includes(id)
+        TicketStatusEnums.filter(
+          ({ id }) => TicketStatus.CLOSE_APPLICATION === id
         )
       );
     }

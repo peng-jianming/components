@@ -18,7 +18,10 @@ import {
 import TicketIdLinkComponent from 'src/pages/ticket/list/components/TicketIdLink';
 
 export const listFields = new Fields([
-  ticketId.clone().setListComponent(TicketIdLinkComponent),
+  ticketId
+    .clone()
+    .setListComponent(TicketIdLinkComponent)
+    .setCustomize('acrossPage', true),
   ticketType,
   ticketStatus,
   description.clone().setIsHtml(),

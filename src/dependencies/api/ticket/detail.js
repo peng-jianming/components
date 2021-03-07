@@ -8,6 +8,17 @@ export const getTicket = ({ params = {}, config = { loading: true } } = {}) => {
   });
 };
 
+export const getTicketChatRecord = ({
+  params = {},
+  config = { loading: false }
+} = {}) => {
+  return axios.request({
+    url: `/api/ticket/${params.id}/chatRecord`,
+    method: 'get',
+    ...config
+  });
+};
+
 export const postTicket = ({ data = {}, config = { loading: true } } = {}) => {
   return axios.request({
     data,

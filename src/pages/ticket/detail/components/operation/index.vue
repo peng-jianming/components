@@ -58,6 +58,7 @@ export default {
         data: {
           action,
           ticket_id: this.ticket.ticket_id,
+          current_ticket_status: this.ticket.ticket_status,
           ...params
         }
       });
