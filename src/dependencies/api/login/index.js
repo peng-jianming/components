@@ -6,7 +6,7 @@ export const getCaptcha = ({
 } = {}) => {
   return axios.request({
     params: query,
-    url: 'http://127.0.0.1:3000/api/login/captcha',
+    url: '/api/login/captcha',
     method: 'get',
     ...config
   });
@@ -51,7 +51,7 @@ export const postRetrieve = ({
 export const postLogin = ({ data = {}, config = { loading: false } } = {}) => {
   return axios.request({
     data,
-    url: 'http://127.0.0.1:3000/api/login',
+    url: '/api/login',
     method: 'post',
     ...config
   });

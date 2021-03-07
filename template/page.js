@@ -3,7 +3,7 @@ module.exports = {
   icon: '/favicon.ico',
   descriptions: '个人学习实践',
   keywords: '个人学习实践',
-  manifest: '/manifest.json',
+  manifest: '',
   css: [
     '//cdn.bootcdn.net/ajax/libs/element-ui/2.15.0/theme-chalk/index.min.css'
   ],

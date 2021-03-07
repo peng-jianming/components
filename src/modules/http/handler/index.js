@@ -3,7 +3,7 @@ import debounceHandler from './debounce';
 import loadingHandler from './loading';
 import errorHandler from './error';
 
-export const handlers = [errorHandler, debounceHandler, loadingHandler];
+export const handlers = [debounceHandler, errorHandler, loadingHandler];
 
 // 如需继续处理需要返回config
 const normalResolve = config => {

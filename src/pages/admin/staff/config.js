@@ -38,9 +38,4 @@ export const listConfigs = [
     .setListComponent(EditComponent)
 ];
 
-export const editConfigs = [
-  userName.clone().setType('user'),
-  email,
-  post,
-  activate
-];
+export const editConfigs = [userName, email, post, activate];

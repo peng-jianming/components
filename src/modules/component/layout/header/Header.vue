@@ -50,14 +50,15 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-    width: 160px;
+    width: 200px;
     height: 50px;
     text-align: center;
     padding: 5px 0;
     background-color: #409eff;
-    img {
-      width: 80%;
-    }
+    background: url('src/modules/img/logo.png');
+    background-position: center center;
+    background-size: 80px 70px;
+    background-repeat: no-repeat;
   }
   .page-menu {
     padding-left: 200px;

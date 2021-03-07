@@ -6,7 +6,7 @@ export const getTicketAboutMe = ({
 } = {}) => {
   return axios.request({
     params: query,
-    url: 'http://127.0.0.1:3000/api/workbench/me',
+    url: '/api/workbench/me',
     method: 'get',
     ...config
   });

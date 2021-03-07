@@ -19,34 +19,29 @@ import EditDialogComponent from 'src/modules/component/EditDialog';
 import FormComponent from 'src/modules/component/template/Form';
 import { editConfigs } from './config';
 import EditDataMinxin from 'src/modules/mixins/edit-data';
+import { patchAllUser } from 'src/dependencies/api/user';
 export default {
   components: {
     EditDialogComponent,
     FormComponent
   },
   mixins: [EditDataMinxin],
-  inject: {
-    aaa: {
-      default() {
-        return [];
-      }
-    }
-  },
   data() {
     return {
       editConfigs
     };
   },
-  computed: {
-    aaaaaaa() {
-      return '123';
-    }
-  },
   methods: {
-    submit() {
+    async submit(callback) {
       const params = this.$refs.form.submit();
-      if (params) {
-        alert('提交成功');
+      const { data } = await patchAllUser({ data: params });
+      if (data && data.code === 0) {
+        this.$message({
+          message: '更新成功',
+          type: 'success'
+        });
+        callback && callback();
+        this.$emit('reload');
       }
     }
   }

@@ -15,11 +15,6 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:3000'
-      },
-      proxy: {
-        '/ticket': {
-          target: 'http://localhost:8090/ticket/index.html'
-        }
       }
     }
   },

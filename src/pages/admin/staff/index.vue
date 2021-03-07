@@ -1,7 +1,11 @@
 <template>
   <div class="staff">
-    <QueryComponent :configs="queryConfigs" />
-    <TableComponent :configs="listConfigs" :datas="users" />
+    <query-component :configs="queryConfigs" @query="getAllUser" />
+    <table-component
+      :configs="listConfigs"
+      :datas="users"
+      @reload="getAllUser"
+    />
   </div>
 </template>
 <script>
@@ -14,13 +18,6 @@ export default {
     QueryComponent,
     TableComponent
   },
-  provide() {
-    return {
-      aaa: () => {
-        return this.users;
-      }
-    };
-  },
   data() {
     return {
       queryConfigs,
@@ -32,8 +29,8 @@ export default {
     this.getAllUser();
   },
   methods: {
-    async getAllUser() {
-      const { data } = await getAllUser();
+    async getAllUser(params) {
+      const { data } = await getAllUser({ query: params });
       if (data && data.code === 0) {
         this.users = data.data.data;
       }

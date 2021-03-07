@@ -2,16 +2,32 @@ import axios from 'axios';
 
 export const getUser = ({ config = { loading: false } } = {}) => {
   return axios.request({
-    url: 'http://127.0.0.1:3000/api/user',
+    url: '/api/user',
     method: 'get',
     ...config
   });
 };
 
-export const getAllUser = ({ config = { loading: false } } = {}) => {
+export const getAllUser = ({
+  query = {},
+  config = { loading: false }
+} = {}) => {
   return axios.request({
+    params: query,
     url: '/api/user/all',
     method: 'get',
+    ...config
+  });
+};
+
+export const patchAllUser = ({
+  data = {},
+  config = { loading: false }
+} = {}) => {
+  return axios.request({
+    data,
+    url: '/api/user/all',
+    method: 'patch',
     ...config
   });
 };
