@@ -206,6 +206,7 @@ export default {
   }
   .user-feature-list {
     display: none;
+    width: 70px;
     background-color: #fff;
     padding: 8px 16px;
     border-radius: 12px;
