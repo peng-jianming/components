@@ -11,6 +11,7 @@
   <meta name="msapplication-tap-highlight" content="no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="robots" content="noindex,noarchive" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
   <meta name="renderer" content="webkit" />
   <meta name="Copyright" content="<%= htmlWebpackPlugin.options.configs.copyright %>" />
   <meta name="Description" content="<%= htmlWebpackPlugin.options.configs.descriptions %>" />
@@ -19,10 +20,10 @@
   <!-- 无侵入式静态资源自动重试 -->
   <% if(htmlWebpackPlugin.options.plugins.assetsRetryConfig) { %>
   <script>
-    <%= htmlWebpackPlugin.options.plugins.assetsRetry %>
+    < %= htmlWebpackPlugin.options.plugins.assetsRetry % >
   </script>
   <script>
-    window.assetsRetryStatistics = window.assetsRetry(<%= htmlWebpackPlugin.options.plugins.assetsRetryConfig %>);
+    window.assetsRetryStatistics = window.assetsRetry( < %= htmlWebpackPlugin.options.plugins.assetsRetryConfig % > );
   </script>
   <% } %>
   <!--开始注入配置文件的css-->
