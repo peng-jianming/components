@@ -20,10 +20,10 @@
   <!-- 无侵入式静态资源自动重试 -->
   <% if(htmlWebpackPlugin.options.plugins.assetsRetryConfig) { %>
   <script>
-    < %= htmlWebpackPlugin.options.plugins.assetsRetry % >
+    <%= htmlWebpackPlugin.options.plugins.assetsRetry %>
   </script>
   <script>
-    window.assetsRetryStatistics = window.assetsRetry( < %= htmlWebpackPlugin.options.plugins.assetsRetryConfig % > );
+    window.assetsRetryStatistics = window.assetsRetry(<%= htmlWebpackPlugin.options.plugins.assetsRetryConfig %>);
   </script>
   <% } %>
   <!--开始注入配置文件的css-->
