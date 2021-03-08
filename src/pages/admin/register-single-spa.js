@@ -30,7 +30,7 @@ const apps = [
         '//8.129.90.25:9000/static/vendor.5.f174fd37baa8a418744a.js'
       );
       await insetScript(
-        '//8.129.90.25:9000/static/main/index.c9867b93f4efabc7bef3.js'
+        '//8.129.90.25:9000/static/main/index.e40e7080aa78b8a56ab1.js'
       );
       insetCss('//8.129.90.25:9000/static/main/index.433126d7ee3315dee3c1.css');
       return window.managePermission;
