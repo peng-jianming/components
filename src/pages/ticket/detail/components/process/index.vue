@@ -1,8 +1,8 @@
 <template>
   <el-scrollbar ref="scrollbar" style="height: 100%; width: 100%">
     <div
-      v-for="({ user, text }, index) in chatRecordList"
-      :key="index"
+      v-for="{ user, text, _id } in chatRecordList"
+      :key="_id"
       class="chat-item clearfloat"
     >
       <!-- 系统提示 -->

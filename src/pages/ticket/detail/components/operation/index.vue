@@ -1,22 +1,18 @@
 <template>
   <el-tabs v-model="activeName" type="border-card">
     <el-tab-pane
-      v-for="({ prop, label, fieldConfig, action }, index) in getFields(
-        tabsFields
-      )"
+      v-for="{ prop, label, fieldConfig, action } in getFields(tabsFields)"
       :key="prop"
       :label="label"
       :name="prop"
     >
       <form-component
-        ref="form"
+        :ref="prop"
         label-position="left"
         :configs="getFields(fieldConfig)"
       />
       <div class="submit-btn">
-        <el-button type="primary" @click="submit(action, index)"
-          >提交</el-button
-        >
+        <el-button type="primary" @click="submit(action, prop)">提交</el-button>
       </div>
     </el-tab-pane>
   </el-tabs>
@@ -52,8 +48,8 @@ export default {
         user: this.$store.state.user.user
       });
     },
-    async submit(action, index) {
-      const params = this.$refs.form[index].submit();
+    async submit(action, prop) {
+      const params = this.$refs[prop][0].submit();
       const { data } = await postTicket({
         data: {
           action,
@@ -63,7 +59,7 @@ export default {
         }
       });
       if (data && data.code === 0) {
-        this.$refs.form[index].resetParams();
+        this.$refs[prop][0].resetParams();
         this.$emit('reload');
         this.activeName = 'handle_ticket';
       }
