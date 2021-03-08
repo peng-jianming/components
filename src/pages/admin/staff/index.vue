@@ -1,6 +1,10 @@
 <template>
   <div class="staff">
-    <query-component :configs="queryConfigs" @query="getAllUser" />
+    <query-component
+      :configs="queryConfigs"
+      @query="getAllUser"
+      @reset="reset"
+    />
     <table-component
       :configs="listConfigs"
       :datas="users"
@@ -22,18 +26,23 @@ export default {
     return {
       queryConfigs,
       listConfigs,
-      users: []
+      users: [],
+      query: {}
     };
   },
   mounted() {
     this.getAllUser();
   },
   methods: {
-    async getAllUser(params) {
-      const { data } = await getAllUser({ query: params });
+    async getAllUser(query = this.query) {
+      const { data } = await getAllUser({ query });
       if (data && data.code === 0) {
         this.users = data.data.data;
       }
+    },
+    reset() {
+      this.query = {};
+      this.getAllUser();
     }
   }
 };
