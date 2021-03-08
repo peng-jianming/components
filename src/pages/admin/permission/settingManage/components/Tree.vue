@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     currentChange(data) {
-      this.$emit('current-change', data);
+      this.$emit('update:current-data', data);
     },
     // 获取当前根节点数据,由于后端使用的mongoDB所以,更新时传递根节点数据更新
     getRootNode(node) {
@@ -91,8 +91,7 @@ export default {
         data: this.treeData.find(({ _id }) => this.currentRootParantId === _id)
       });
       if (data && data.code === 0) {
-        this.$notify({
-          title: '提示',
+        this.$message({
           message: '操作成功',
           type: 'success'
         });
@@ -117,8 +116,7 @@ export default {
           )
         });
         if (data && data.code === 0) {
-          this.$notify({
-            title: '提示',
+          this.$message({
             message: '操作成功',
             type: 'success'
           });
@@ -138,11 +136,11 @@ export default {
         data: this.treeData.find(({ _id }) => this.currentRootParantId === _id)
       });
       if (data && data.code === 0) {
-        this.$notify({
-          title: '提示',
+        this.$message({
           message: '操作成功',
           type: 'success'
         });
+        this.currentChange({});
         callback && callback();
       }
     },
@@ -158,6 +156,10 @@ export default {
       });
       if (data && data.code === 0) {
         callback && callback();
+        this.$message({
+          message: '操作成功',
+          type: 'success'
+        });
         this.getPermission();
       }
     }

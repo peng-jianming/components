@@ -1,6 +1,4 @@
-import Vue from 'vue';
 import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 
 const originalPush = VueRouter.prototype.push;
 
@@ -57,16 +55,6 @@ export const adminRouters = [
       sidebarName: '客服管理',
       sidebarIcon: 'el-icon-service',
       sidebarPermissionCode: 'ADMIN_STAFF_VIEW'
-    }
-  },
-  {
-    path: '/notice',
-    name: 'notice',
-    component: () =>
-      import(/* webpackChunkName: "admin/notice" */ 'src/pages/admin/notice'),
-    meta: {
-      sidebarName: '客服公告',
-      sidebarIcon: 'el-icon-bell'
     }
   }
 ];

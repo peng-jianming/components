@@ -1,6 +1,4 @@
-import Vue from 'vue';
 import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 
 const originalPush = VueRouter.prototype.push;
 
@@ -23,8 +21,8 @@ export const ticketRouters = [
       import(/* webpackChunkName: "ticket/list" */ 'src/pages/ticket/list'),
     meta: {
       sidebarName: '工单查询',
-      sidebarIcon: 'el-icon-tickets'
-      // sidebarPermissionCode: 'LIST_TICKET_VIEW'
+      sidebarIcon: 'el-icon-tickets',
+      sidebarPermissionCode: 'LIST_TICKET_VIEW'
     }
   },
   {
@@ -32,8 +30,8 @@ export const ticketRouters = [
     name: 'create',
     meta: {
       sidebarName: '创建工单(qiankun应用)',
-      sidebarIcon: 'el-icon-edit-outline'
-      // sidebarPermissionCode: 'CREATE_TICKET_VIEW'
+      sidebarIcon: 'el-icon-edit-outline',
+      sidebarPermissionCode: 'CREATE_TICKET_VIEW'
     }
   },
   {

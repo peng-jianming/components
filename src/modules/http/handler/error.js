@@ -2,11 +2,12 @@ import { MessageBox } from 'element-ui';
 import { isFullEmpty } from 'src/modules/utils/params';
 
 const DEFAULT_MESSAGE = {
+  400: '<div>400: 参数校验错误。</div>',
   401: '<div>401: 登录信息已失效，请重新登录。</div>',
   403: '<div>403: 您当前无该功能权限，请申请权限。</div>',
-  404: '<div>404: 前端页面请求资源未找到，请重新操作</div>',
-  422: '<div>422: 参数校验错误，请检查必填项或格式是否正确</div>',
-  500: '<div>500: 接口返回错误</div>'
+  404: '<div>404: 前端页面请求资源未找到，请重新操作。</div>',
+  422: '<div>422: 参数校验错误，请检查必填项或格式是否正确。</div>',
+  500: '<div>500: 接口返回错误。</div>'
 };
 const errorMessage = ({
   title = '提示',

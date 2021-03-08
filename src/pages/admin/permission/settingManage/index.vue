@@ -2,7 +2,7 @@
   <div class="setting-manage">
     <tree-component
       class="setting-manage-left"
-      @current-change="currentChange"
+      :current-data.sync="currentData"
     />
     <detail-component
       class="setting-manage-right"
@@ -23,11 +23,6 @@ export default {
     return {
       currentData: {}
     };
-  },
-  methods: {
-    currentChange(data) {
-      this.currentData = data;
-    }
   }
 };
 </script>
