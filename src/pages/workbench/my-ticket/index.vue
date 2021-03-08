@@ -1,10 +1,7 @@
 <template>
   <div class="ticket-list-page">
     <div>
-      <Query-component
-        :configs="queryConfig"
-        @query="getTicketAboutMe(page, limit, $event)"
-      />
+      <Query-component :configs="queryConfig" @query="search" @reset="reset" />
       <Table-component :datas="list" :configs="configs" />
     </div>
     <el-pagination
@@ -34,7 +31,8 @@ export default {
       list: [],
       page: 1,
       limit: 10,
-      total: 0
+      total: 0,
+      query: {}
     };
   },
   computed: {
@@ -46,7 +44,12 @@ export default {
     this.getTicketAboutMe();
   },
   methods: {
-    async getTicketAboutMe(page = this.page, limit = this.limit, query = {}) {
+    async getTicketAboutMe(
+      page = this.page,
+      limit = this.limit,
+      query = this.query
+    ) {
+      this.query = query;
       const { data } = await getTicketAboutMe({
         query: {
           ...query,
@@ -58,6 +61,15 @@ export default {
         this.list = data.data.data;
         this.total = data.data.total;
       }
+    },
+    search(params) {
+      this.page = 1;
+      this.getTicketAboutMe(this.page, this.limit, params);
+    },
+    reset() {
+      this.query = {};
+      this.page = 1;
+      this.getTicketAboutMe();
     }
   }
 };

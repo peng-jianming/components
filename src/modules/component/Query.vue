@@ -30,6 +30,7 @@ export default {
     },
     reset() {
       this.$refs.form.resetParams();
+      this.$emit('reset');
     }
   }
 };
