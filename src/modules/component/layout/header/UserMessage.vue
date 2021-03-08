@@ -174,8 +174,7 @@ export default {
         data: params
       });
       if (data && data.code === 0) {
-        this.$notify({
-          title: '成功',
+        this.$message({
           message: '修改成功',
           type: 'success'
         });

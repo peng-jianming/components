@@ -1,5 +1,5 @@
 import { getUser, putUpdateUser } from 'src/dependencies/api/user';
-import { Notification } from 'element-ui';
+import { Message } from 'element-ui';
 const state = () => {
   return {
     user: {
@@ -31,8 +31,7 @@ const actions = {
       data: params
     });
     if (data && data.code === 0) {
-      Notification({
-        title: '成功',
+      Message({
         message: '修改成功',
         type: 'success'
       });
