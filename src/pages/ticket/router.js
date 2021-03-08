@@ -38,7 +38,7 @@ export const ticketRouters = [
     path: '/detail',
     name: 'detail',
     component: () =>
-      import(/* webpackChunkName: "ticket/detail" */ 'src/pages/ticket/detail'),
+      import(/* webpackPrefetch: true */ 'src/pages/ticket/detail'),
     meta: {
       sidebarName: '工单详情',
       sidebarHidden: true

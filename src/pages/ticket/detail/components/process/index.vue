@@ -18,7 +18,14 @@
               : 'chat-avatar-left'
           ]"
         >
-          <el-avatar shape="square" :src="user.avatar"> </el-avatar>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            :content="user.user_name"
+            placement="top"
+          >
+            <el-avatar shape="square" :src="user.avatar"> </el-avatar>
+          </el-tooltip>
         </div>
         <div
           :class="[
