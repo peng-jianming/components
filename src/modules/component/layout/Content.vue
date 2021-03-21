@@ -19,6 +19,7 @@ export default {
 .page-content-card {
   height: 100%;
   margin: 5px;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.2) 12px 0 10px !important;
   .el-card__body {
     height: 100%;

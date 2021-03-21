@@ -56,6 +56,7 @@ export class Fields {
   }
 
   sort(props) {
+    // 按照传入的props进行排序插入原有的最后面,不再props里面的,按照原有顺序(不进行排序)排在前面
     this.fields.sort(
       (preEnum, nextEnum) =>
         props.indexOf(preEnum.prop) - props.indexOf(nextEnum.prop)

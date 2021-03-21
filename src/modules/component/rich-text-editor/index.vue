@@ -40,10 +40,37 @@ export default {
               ['clean'], // 清除字体样式
               ['image', 'video'] // 上传图片、上传视频
             ]
+            // handlers: {
+            //   image: function() {
+            //     var self = this;
+
+            //     var fileInput = this.container.querySelector(
+            //       'input.ql-image[type=file]'
+            //     );
+            //     if (fileInput === null) {
+            //       fileInput = document.createElement('input');
+            //       fileInput.setAttribute('type', 'file');
+            //       fileInput.setAttribute(
+            //         'accept',
+            //         'image/png, image/gif, image/jpeg, image/bmp, image/x-icon'
+            //       );
+            //       fileInput.classList.add('ql-image');
+            //       fileInput.addEventListener('change', function(val) {
+            //         // 从fileInput.files获取选中图片,进行上传,插入
+            //       });
+            //     }
+            //     fileInput.click();
+            //   }
+            // }
           }
         }
       }
     };
+  },
+  computed: {
+    quill() {
+      return this.$refs.myQuillEditor.quill;
+    }
   },
   methods: {
     handleInput(val) {
