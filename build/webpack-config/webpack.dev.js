@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'eval-module-source-map',
   devServer: {
     compress: true,
-    host: '127.0.0.1',
+    host: 'www.test.com',
     port: '8090',
     hot: true,
     historyApiFallback: true,
@@ -13,7 +13,7 @@ module.exports = {
     clientLogLevel: 'silent',
     disableHostCheck: true,
     proxy: {
-      '/api': {
+      '/weixin': {
         target: 'http://localhost:3000'
       }
     }
