@@ -56,7 +56,7 @@ export default {
   mounted() {
     this.getTicketChatRecord();
     this.socket = new Socket({
-      url: 'www.pengjianming.top:8080',
+      url: '8.129.90.25:8080',
       // url: '127.0.0.1:8080',
       token: getToken(),
       roomId: this.$route.query.id,

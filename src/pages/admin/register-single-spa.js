@@ -27,13 +27,13 @@ const apps = [
     // 当activeWhen为true时,将触发该方法,挂载app,需返回暴露出来的全局变量
     app: async () => {
       await insetScript(
-        '//www.pengjianming.top:7777/static/vendor.5.f174fd37baa8a418744a.js'
+        '//8.129.90.25:7777/static/vendor.5.f174fd37baa8a418744a.js'
       );
       await insetScript(
-        '//www.pengjianming.top:7777/static/main/index.e40e7080aa78b8a56ab1.js'
+        '//8.129.90.25:7777/static/main/index.e40e7080aa78b8a56ab1.js'
       );
       insetCss(
-        '//www.pengjianming.top:7777/static/main/index.433126d7ee3315dee3c1.css'
+        '//8.129.90.25:7777/static/main/index.433126d7ee3315dee3c1.css'
       );
       return window.managePermission;
     },

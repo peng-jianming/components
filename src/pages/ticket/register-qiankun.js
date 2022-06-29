@@ -8,7 +8,7 @@ let loadingInstance = null;
 const apps = [
   {
     name: 'createTicket',
-    entry: '//www.pengjianming.top:9999',
+    entry: '//8.129.90.25:9999',
     // entry: '//localhost:4000',
     container: '#qiankun-container',
     activeRule: location => location.pathname.startsWith('/ticket/create'),
