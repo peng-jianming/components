@@ -8,7 +8,8 @@
     "start": "webpack serve --config ./build/webpack.config.js --env development",
     "lint": "eslint --fix --ext .js,.vue src/",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "commit": "node ./node_modules/cz-customizable/standalone.js"
   },
   "keywords": [],
   "author": "",
