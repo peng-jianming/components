@@ -1,22 +1,24 @@
-const webpack = require('webpack');
-
 module.exports = {
   mode: 'development',
-  devtool: 'eval-module-source-map',
+  devtool: 'cheap-module-source-map',
+  optimization: {
+    runtimeChunk: true
+  },
   devServer: {
+    hot: 'only',
     compress: true,
-    host: 'www.test.com',
-    port: '8090',
-    hot: true,
+    host: '0.0.0.0',
+    allowedHosts: 'auto',
+    port: '8004',
+    client: {
+      logging: 'warn',
+      overlay: false
+    },
     historyApiFallback: true,
-    index: 'index.html',
-    clientLogLevel: 'silent',
-    disableHostCheck: true,
     proxy: {
-      '/weixin': {
-        target: 'http://localhost:3000'
+      '/api': {
+        target: 'http://172.16.10.34:3000'
       }
     }
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin({})]
+  }
 };

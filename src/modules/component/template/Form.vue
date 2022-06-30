@@ -293,7 +293,7 @@ export default {
       this.configs
         .filter(({ props }) => props)
         .forEach(({ props }) => {
-          props.forEach(prop => {
+          props.forEach((prop) => {
             this.params[prop] === undefined &&
               this.$set(this.params, prop, undefined);
           });
@@ -323,8 +323,8 @@ export default {
       // 动态组件重置
       const refs = this.$refs || {};
       Object.values(refs)
-        .filter(ref => ref && ref[0] && isFunction(ref[0].reset))
-        .forEach(ref => {
+        .filter((ref) => ref && ref[0] && isFunction(ref[0].reset))
+        .forEach((ref) => {
           ref[0] && ref[0].reset();
         });
     },
@@ -333,8 +333,8 @@ export default {
       // 动态组件提交
       const refs = this.$refs || {};
       Object.values(refs)
-        .filter(ref => ref && ref[0] && isFunction(ref[0].submit))
-        .forEach(ref => {
+        .filter((ref) => ref && ref[0] && isFunction(ref[0].submit))
+        .forEach((ref) => {
           ref[0] && ref[0].submit();
         });
       // 查询模式直接返回参数，表单模式需要验证信息

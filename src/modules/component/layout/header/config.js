@@ -9,10 +9,7 @@ import AvatarComponent from './Avatar';
 
 export const userConfig = [
   email,
-  avatar
-    .clone()
-    .setIsFull()
-    .setEditComponent(AvatarComponent)
+  avatar.clone().setIsFull().setEditComponent(AvatarComponent)
 ];
 
 export const passwordConfig = [

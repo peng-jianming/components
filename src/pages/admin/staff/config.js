@@ -10,20 +10,9 @@ const handle = new Field({
 });
 
 export const queryConfigs = [
-  userName
-    .clone()
-    .setType('user')
-    .setFormItemWidth('30%')
-    .setFormItemInline(),
-  post
-    .clone()
-    .setType('select')
-    .setFormItemWidth('30%')
-    .setFormItemInline(),
-  activate
-    .clone()
-    .setFormItemWidth('30%')
-    .setFormItemInline()
+  userName.clone().setType('user').setFormItemWidth('30%').setFormItemInline(),
+  post.clone().setType('select').setFormItemWidth('30%').setFormItemInline(),
+  activate.clone().setFormItemWidth('30%').setFormItemInline()
 ];
 
 export const listConfigs = [
@@ -31,11 +20,7 @@ export const listConfigs = [
   email,
   post,
   activate,
-  handle
-    .clone()
-    .setWidth(200)
-    .setIsFull()
-    .setListComponent(EditComponent)
+  handle.clone().setWidth(200).setIsFull().setListComponent(EditComponent)
 ];
 
 export const editConfigs = [userName, email, post, activate];

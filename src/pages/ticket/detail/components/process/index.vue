@@ -56,11 +56,12 @@ export default {
   mounted() {
     this.getTicketChatRecord();
     this.socket = new Socket({
-      url: '8.129.90.25:8080',
-      // url: '127.0.0.1:8080',
+      url: '8.129.90.25:4444',
+      // url: '172.16.10.34:4444',
       token: getToken(),
       roomId: this.$route.query.id,
-      callback: data => {
+      callback: (data) => {
+        console.log(data, '----');
         if (data.event === 'chat') {
           this.getTicketChatRecord();
         }
@@ -72,7 +73,8 @@ export default {
   },
   updated() {
     // 保证有消息来重新渲染DOM时,滚动条可以重置到底部
-    this.$refs.scrollbar.wrap.scrollTop = this.$refs.scrollbar.wrap.scrollHeight;
+    this.$refs.scrollbar.wrap.scrollTop =
+      this.$refs.scrollbar.wrap.scrollHeight;
   },
   methods: {
     async getTicketChatRecord() {

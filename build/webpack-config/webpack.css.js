@@ -8,7 +8,12 @@ module.exports = (production = false) => {
           test: /\.css$/,
           use: [
             production ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            },
             'postcss-loader'
           ]
         },
@@ -16,7 +21,12 @@ module.exports = (production = false) => {
           test: /\.less$/,
           use: [
             production ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
             'postcss-loader',
             'less-loader'
           ]

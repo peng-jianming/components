@@ -40,7 +40,7 @@ export default {
       // 增加深拷贝，防止引用到内部属性
       const data = JSON.parse(JSON.stringify(this.data));
       // 设置默认值
-      Object.keys(data).forEach(key =>
+      Object.keys(data).forEach((key) =>
         this.$set(
           this.params,
           key,

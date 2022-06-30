@@ -14,8 +14,5 @@ export default [
   passwordConfirm.clone().setValidateMethod((params, newData, oldData) => {
     return newData[password.prop] === params || '二次密码输入不一致';
   }),
-  captchaCode
-    .clone()
-    .setIsFull()
-    .setEditComponent(CaptchaComponent)
+  captchaCode.clone().setIsFull().setEditComponent(CaptchaComponent)
 ];

@@ -40,7 +40,7 @@
             </div>
           </el-collapse-item>
         </el-collapse>
-        <div style="text-align: center; margin-top: 10px;">
+        <div style="text-align: center; margin-top: 10px">
           <el-pagination
             :current-page.sync="page"
             layout="prev, pager, next"
@@ -100,10 +100,10 @@ export default {
   },
   mounted() {
     this.socket = new Socket({
-      url: '8.129.90.25:8080',
-      // url: '127.0.0.1:8080',
+      url: '8.129.90.25:4444',
+      // url: '172.16.10.34:4444',
       token: getToken(),
-      callback: data => {
+      callback: (data) => {
         if (data.event === 'tip') {
           this.openMessageDialog();
           this.$notify({

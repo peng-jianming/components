@@ -56,7 +56,7 @@ export default {
       // 删除时删除整个名字
       const names = e.srcElement.value.split(this.delimiter);
       const lastName = names.pop();
-      const value = names.filter(name => this.cacheNameList.includes(name));
+      const value = names.filter((name) => this.cacheNameList.includes(name));
       this.queryString = [...value, lastName].join(this.delimiter);
     },
     handleChange(val) {
@@ -70,7 +70,9 @@ export default {
       // 有可能输入完整才选择内容,那么,就会重复,所以需要去重
       const values = this.singleton ? [] : this.value.split(this.delimiter);
       values.push(val.user_name);
-      this.handleChange(uniq(values.filter(name => name)).join(this.delimiter));
+      this.handleChange(
+        uniq(values.filter((name) => name)).join(this.delimiter)
+      );
     },
     async querySearch(q, cb) {
       // 当点击获取焦点时,自动搜索当前输入人名并缓存结果
@@ -79,7 +81,7 @@ export default {
       } else {
         // 当多人模式时,需要将所有人名查询缓存
         const names = q.split(this.delimiter);
-        await Promise.all(names.map(name => this.getUser(name)));
+        await Promise.all(names.map((name) => this.getUser(name)));
         const lastName = names.pop();
         this.getUser(lastName, cb);
       }
@@ -95,8 +97,8 @@ export default {
         // 当查询数据在缓存里面,则直接取缓存里面的(防止已经填写完成的名字多次请求)
         cb(
           this.cacheNameList
-            .filter(name => name.indexOf(q) !== -1)
-            .map(name => {
+            .filter((name) => name.indexOf(q) !== -1)
+            .map((name) => {
               return { user_name: name };
             })
         );
@@ -109,7 +111,7 @@ export default {
           // 缓存已搜索的人名
           this.cacheNameList = uniq([
             ...this.cacheNameList,
-            ...data.data.map(item => item.user_name)
+            ...data.data.map((item) => item.user_name)
           ]);
           cb(data.data);
           this.loaded();
@@ -130,7 +132,7 @@ export default {
           ? [this.queryString]
           : this.queryString.split(this.delimiter);
         const value = uniq(
-          names.filter(name => name && this.cacheNameList.includes(name))
+          names.filter((name) => name && this.cacheNameList.includes(name))
         ).join(this.delimiter);
         this.handleChange(value);
       }

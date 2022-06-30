@@ -4,8 +4,5 @@ import CaptchaComponent from '../Captcha';
 export default [
   email,
   password,
-  captchaCode
-    .clone()
-    .setIsFull()
-    .setEditComponent(CaptchaComponent)
+  captchaCode.clone().setIsFull().setEditComponent(CaptchaComponent)
 ];

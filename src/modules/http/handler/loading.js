@@ -1,6 +1,6 @@
 import { Loading } from 'element-ui';
 
-const openLoading = config => {
+const openLoading = (config) => {
   if (config.loading) {
     return Object.assign(config, {
       loading: Loading.service({
@@ -14,7 +14,7 @@ const openLoading = config => {
   return config;
 };
 
-const closeLoading = response => {
+const closeLoading = (response) => {
   const config = response.config || {};
   if (config && config.loading) {
     config.loading.close();

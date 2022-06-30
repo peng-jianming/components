@@ -27,13 +27,13 @@ export const tabsFields = new Fields([
       .setCustomize('fieldConfig', tranferConfig)
       .setShowCondition(
         // 当前状态不为申请结单,并且自己时当前处理人或者客户代表时,显示转单tab
-        context =>
+        (context) =>
           TicketStatus.CLOSE_APPLICATION !== context.data.ticket_status &&
           [context.data.responsible, context.data.current_handler].includes(
             context.user.user_name
           )
       )
   ]).setShowCondition(
-    context => TicketStatus.CLOSED !== context.data.ticket_status
+    (context) => TicketStatus.CLOSED !== context.data.ticket_status
   )
 ]);

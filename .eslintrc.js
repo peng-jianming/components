@@ -1,19 +1,17 @@
 module.exports = {
-  root: true,
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
   env: {
     browser: true,
-    node: true
+    es2021: true
   },
   extends: [
+    'plugin:vue/essential',
     'standard',
-    'plugin:vue/recommended',
-    'plugin:prettier/recommended',
-    'prettier/standard',
-    'prettier/vue'
+    'plugin:prettier/recommended' // https://github.com/prettier/eslint-plugin-prettier
   ],
+  parserOptions: {
+    parser: '@babel/eslint-parser'
+  },
+  plugins: ['vue'],
   rules: {
     'no-new': 'off',
     'prefer-const': 'off',
@@ -21,6 +19,7 @@ module.exports = {
     'vue/require-default-prop': 'off',
     'vue/no-v-html': 'off',
     'vue/no-use-v-if-with-v-for': 'off',
-    'vue/valid-v-model': 'off'
+    'vue/valid-v-model': 'off',
+    'vue/multi-word-component-names': 'off'
   }
 };

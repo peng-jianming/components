@@ -196,7 +196,7 @@ export default {
   computed: {
     hasExpandFiled() {
       const config = this.configs || [];
-      return config.some(list => list.isExpand);
+      return config.some((list) => list.isExpand);
     }
   },
   methods: {

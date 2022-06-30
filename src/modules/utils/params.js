@@ -21,9 +21,9 @@ export function filterEmpty(data) {
   Object.keys(params)
     // 值为空、数组长度为0、时间格式0000-00-00 00:00:00设置默认值为undefined
     .filter(
-      key => isFullEmpty(params[key]) || params[key] === '0000-00-00 00:00:00'
+      (key) => isFullEmpty(params[key]) || params[key] === '0000-00-00 00:00:00'
     )
-    .forEach(key => {
+    .forEach((key) => {
       params[key] = undefined;
       delete params[key];
     });
@@ -35,7 +35,7 @@ export function validateRequired(configs, params) {
     .filter(({ required }) => required)
     .filter(({ prop, props }) => {
       if (props) {
-        return props.every(prop => isFullEmpty(params[prop]));
+        return props.every((prop) => isFullEmpty(params[prop]));
       }
       return isFullEmpty(params[prop]);
     })
@@ -69,7 +69,7 @@ export function validateCustomize(configs, params, data) {
           ? validateMethod(params, data)
           : validateMethod(params[prop], params, data)
       )
-      .filter(result => !(result === true))
+      .filter((result) => !(result === true))
   );
 }
 
@@ -106,7 +106,7 @@ export function assertWithMessage(value, message) {
 export function validateWithMessage(configs, params, data) {
   const { status, messages } = validate(configs, params, data);
   if (status === false) {
-    const message = messages.map(message => `<p>${message}</p>`).join('\n');
+    const message = messages.map((message) => `<p>${message}</p>`).join('\n');
     MessageBox.alert(message, {
       title: '参数错误',
       type: 'error',
@@ -125,8 +125,8 @@ export function filterNotInConfigs(configs = [], params = {}) {
     []
   );
   Object.keys(params)
-    .filter(key => !configKeys.includes(key))
-    .forEach(key => {
+    .filter((key) => !configKeys.includes(key))
+    .forEach((key) => {
       // 需要修改原始params
       // eslint-disable-next-line no-param-reassign
       params[key] = undefined;

@@ -7,7 +7,7 @@ export default {
     listEnumsValue(enums = [], data = [], sep = ';') {
       return enums
         .filter(({ id }) => data.includes(id))
-        .map(item => item.value)
+        .map((item) => item.value)
         .join(sep);
     }
   }

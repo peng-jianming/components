@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <div class="page-logo"><button @click="ceshi">ceshi1</button></div>
+    <div class="page-logo"></div>
     <ul class="page-menu clearfloat">
       <li v-for="item in menus" :key="item.id" class="menu-item">
         <a :href="item.link">{{ item.name }}</a>
@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-import wx from 'weixin-js-sdk';
 import UserMessageComponent from './UserMessage';
 export default {
   components: {
@@ -39,27 +37,6 @@ export default {
         }
       ]
     };
-  },
-  methods: {
-    async ceshi() {
-      const { data } = await axios.get(
-        `/weixin/ticket?url=${location.href.split('#')[0]}`
-      );
-      if (data.code === 0) {
-        wx.config({
-          debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-          appId: 'wxc8d13d9f65978ad8', // 必填，公众号的唯一标识
-          jsApiList: [], // 必填，需要使用的JS接口列表
-          ...data.data
-        });
-        wx.ready(function() {
-          console.log('连接成功');
-        });
-        wx.error(function(res) {
-          console.log('连接失败');
-        });
-      }
-    }
   }
 };
 </script>

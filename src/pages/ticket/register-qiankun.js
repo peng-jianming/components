@@ -8,11 +8,11 @@ let loadingInstance = null;
 const apps = [
   {
     name: 'createTicket',
-    entry: '//8.129.90.25:9999',
+    entry: '//8.129.90.25:5555',
     // entry: '//localhost:4000',
     container: '#qiankun-container',
-    activeRule: location => location.pathname.startsWith('/ticket/create'),
-    loader: loading => {
+    activeRule: (location) => location.pathname.startsWith('/ticket/create'),
+    loader: (loading) => {
       console.log(`loading变化了,当前状态: ${loading}`);
       if (loading) {
         // 全屏loading加载效果
@@ -33,17 +33,17 @@ const apps = [
 
 registerMicroApps(apps, {
   beforeLoad: [
-    app => {
+    (app) => {
       console.log('before load', app);
     }
   ],
   beforeMount: [
-    app => {
+    (app) => {
       console.log('before mount', app);
     }
   ],
   afterUnmount: [
-    app => {
+    (app) => {
       console.log('after unload', app);
     }
   ]

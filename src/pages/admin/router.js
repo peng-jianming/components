@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 const originalPush = VueRouter.prototype.push;
 
 VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err);
+  return originalPush.call(this, location).catch((err) => err);
 };
 
 export const adminRouters = [
@@ -17,7 +17,7 @@ export const adminRouters = [
   {
     path: '/permission',
     name: 'permission',
-    component: { render: e => e('router-view') },
+    component: { render: (e) => e('router-view') },
     meta: {
       sidebarName: '权限控制',
       sidebarIcon: 'el-icon-view',

@@ -36,16 +36,7 @@ export const listFields = new Fields([
 ]);
 
 export const queryConfig = [
-  ticketId
-    .clone()
-    .setFormItemWidth('30%')
-    .setFormItemInline(),
-  ticketType
-    .clone()
-    .setFormItemWidth('30%')
-    .setFormItemInline(),
-  ticketStatus
-    .clone()
-    .setFormItemWidth('30%')
-    .setFormItemInline()
+  ticketId.clone().setFormItemWidth('30%').setFormItemInline(),
+  ticketType.clone().setFormItemWidth('30%').setFormItemInline(),
+  ticketStatus.clone().setFormItemWidth('30%').setFormItemInline()
 ];

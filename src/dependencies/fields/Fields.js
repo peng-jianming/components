@@ -85,7 +85,7 @@ export class Fields {
       }
     }
     return {
-      fields: fields.filter(field => field),
+      fields: fields.filter((field) => field),
       containers
     };
   }
@@ -104,7 +104,7 @@ export class Fields {
     if (transforms.length > 0) {
       // 克隆一份,防止原内容被改变
       field = field.clone();
-      transforms.forEach(transform => {
+      transforms.forEach((transform) => {
         // 传入参数,调用converter函数对field进行改变
         this.changeField(field, transform);
       });
@@ -118,15 +118,15 @@ export class Fields {
    */
   getFields(context) {
     const { fields, containers } = this.allToField(
-      this.fields.filter(field => field.isShow(context)),
+      this.fields.filter((field) => field.isShow(context)),
       this.containers,
       context
     );
     return (
       fields
-        .map(field => this.transferField(field, containers, context))
+        .map((field) => this.transferField(field, containers, context))
         // 对改变后的field字段再进行一次查看是否显示,改变时有可能修改了这个属性
-        .filter(field => field.isShow(context))
+        .filter((field) => field.isShow(context))
     );
   }
 

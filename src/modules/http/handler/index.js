@@ -6,17 +6,17 @@ import errorHandler from './error'; // 改变了返回结构,需要放在最后
 export const handlers = [debounceHandler, loadingHandler, errorHandler];
 
 // 如需继续处理需要返回config
-const normalResolve = config => {
+const normalResolve = (config) => {
   return config;
 };
 
 // 如需继续处理reject需要返回Promise.reject
-const normalReject = error => {
+const normalReject = (error) => {
   return Promise.reject(error);
 };
 
 // 单文件添加拦截器
-export const registerHandler = handlers => {
+export const registerHandler = (handlers) => {
   handlers.forEach(
     ({
       requestResolve = normalResolve,

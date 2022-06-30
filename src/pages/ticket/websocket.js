@@ -9,9 +9,9 @@ class Socket {
   }
 
   init() {
-    this.ws = new WebSocket(`wss://${this.url}`);
+    this.ws = new WebSocket(`ws://${this.url}`);
     this.ws.onopen = () => this.onOpen(this.token, this.roomId);
-    this.ws.onmessage = e => this.onMessage(e, this.callback);
+    this.ws.onmessage = (e) => this.onMessage(e, this.callback);
     this.ws.onerror = this.onError;
     this.ws.onclose = this.onClose;
   }

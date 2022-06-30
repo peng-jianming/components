@@ -53,7 +53,7 @@ export default {
         !isEqual(val, oldVal) &&
         this.levelData.length > 0
       ) {
-        const target = this.levelData[0].find(item => item.label === val);
+        const target = this.levelData[0].find((item) => item.label === val);
         const serviceSceneDisplay = this.data.service_scene_display || [];
         if (
           target &&

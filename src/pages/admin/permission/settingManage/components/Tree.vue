@@ -126,7 +126,7 @@ export default {
     async update({ params, callback }, node) {
       const parent = node.parent;
       const children = parent.data.children || parent.data;
-      const index = children.findIndex(d => d._id === node.data._id);
+      const index = children.findIndex((d) => d._id === node.data._id);
       this.$set(children, index, { ...children[index], ...params });
       this.getRootNode(node);
       const { data } = await putPermission({

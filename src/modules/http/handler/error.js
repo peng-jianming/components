@@ -48,7 +48,7 @@ export default {
       // 格式化错误信息
       if (Array.isArray(data.errors) && !isFullEmpty(data.errors)) {
         message = data.errors
-          .map(error => {
+          .map((error) => {
             return `<p>${error.field} ${error.message}</p>`;
           })
           .join('\n');

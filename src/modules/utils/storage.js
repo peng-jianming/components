@@ -1,4 +1,4 @@
-export default key => ({
+export default (key) => ({
   save(value) {
     localStorage.setItem(key, value);
   },

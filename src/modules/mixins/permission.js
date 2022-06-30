@@ -7,7 +7,7 @@ export default {
   methods: {
     // 递归遍历路由,没有权限的去除
     handlRouter(route, permission) {
-      return route.filter(item => {
+      return route.filter((item) => {
         if (item.children) {
           item.children = this.handlRouter(item.children, permission);
           return item.children.length;

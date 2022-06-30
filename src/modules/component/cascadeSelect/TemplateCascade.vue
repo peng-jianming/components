@@ -67,7 +67,7 @@ export default {
         this.$set(
           this.levelData,
           level,
-          data.data.map(item => ({
+          data.data.map((item) => ({
             id: item.id,
             label: item.name,
             name: item.name
@@ -79,7 +79,7 @@ export default {
     handleLevelChange(val, level) {
       const data =
         Array.isArray(this.levelData[level]) &&
-        this.levelData[level].find(data => data.id === val);
+        this.levelData[level].find((data) => data.id === val);
       this.updateData(val, level, data);
       if (level < this.maxIndex) {
         const nextLevel = level + 1;

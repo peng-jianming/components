@@ -4,10 +4,11 @@ import storage from 'src/modules/utils/storage';
 
 const { get: getToken } = storage('token');
 
+axios.defaults.baseURL = 'http://8.129.90.25';
 const Http = {};
 axios.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 
-Http.install = Vue => {
+Http.install = (Vue) => {
   registerHandler(handlers);
   Vue.prototype.$http = {
     get(url, config) {
