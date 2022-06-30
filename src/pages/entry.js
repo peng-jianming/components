@@ -1,2 +1,2 @@
-// 重定向到我的工作台
+// 重定向到工单查询
 window.location.href = '/ticket/';

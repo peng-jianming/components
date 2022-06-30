@@ -1,8 +1,8 @@
 <template>
   <div class="ticket-list-page">
     <div>
-      <Query-component :configs="queryConfig" @query="search" @reset="reset" />
-      <Table-component :datas="list" :configs="configs" />
+      <query-component :configs="queryConfig" @query="search" @reset="reset" />
+      <table-component :datas="list" :configs="configs" />
     </div>
     <el-pagination
       :current-page.sync="page"

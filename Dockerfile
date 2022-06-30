@@ -16,6 +16,9 @@ RUN npm run build
 # production stage
 FROM nginx:stable-alpine as production-stage
 
+# 替换容器中的nginx配置
+ADD default.conf /etc/nginx/conf.d/
+
 # 将上面生成镜像中构建好的文件复制到nginx内容的默认目录上
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
