@@ -8,13 +8,6 @@ VueRouter.prototype.push = function push(location) {
 
 export const ticketRouters = [
   {
-    path: '/',
-    redirect: '/list',
-    meta: {
-      sidebarHidden: true
-    }
-  },
-  {
     path: '/list',
     name: 'list',
     component: () =>
